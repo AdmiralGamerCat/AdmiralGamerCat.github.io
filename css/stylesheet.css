@@ -5,6 +5,9 @@ body {
 	font-family: Cascadia Mono, sans-serif;
 	src: url("fonts/CascadiaMono.woff2") format("woff2"),
 	url("fonts/CascadiaMono.off") format("woff");
+
+	font-weight: normal;
+	font-style: normal;
 }
 
 
