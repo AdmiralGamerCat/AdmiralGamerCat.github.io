@@ -1,0 +1,31 @@
+body {
+	color: whitesmoke;
+	background-color: #313131;
+	font-size: 20px;
+	font-family: Cascadia Mono, sans-serif;
+}
+
+
+.function {
+    color: #DBDCB0;
+}
+
+.bracket {
+    color: #F3D84B;
+}
+
+.string {
+    color: #C0937C;
+}
+
+.variable {
+	color: #B1DBFA
+}
+
+.value {
+	color: #719BD1
+}
+
+.curly_bracket {
+	color: #C777D0
+}
