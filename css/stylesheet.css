@@ -1,6 +1,6 @@
 body {
 	color: whitesmoke;
-	background-color: #313131;
+	background-color: #1f1f1f;
 	font-size: 20px;
 	font-family: Cascadia Mono, sans-serif;
 }
@@ -28,4 +28,8 @@ body {
 
 .curly_bracket {
 	color: #C777D0
+}
+
+.comment {
+	color: #699855
 }

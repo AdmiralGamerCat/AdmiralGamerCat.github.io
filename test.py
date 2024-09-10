@@ -1,2 +1,0 @@
-username = ""
-print(f"{username}")
