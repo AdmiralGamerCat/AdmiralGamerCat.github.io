@@ -4,15 +4,15 @@ html, body {
     overflow:hidden;
   }
   
-  div {
-    height: 100%;
-  }
+div {
+  height: 100%;
+}
 
-  @font-face {
-    font-family: 'Cascadia Mono';
-    src: url("../fonts/woff2/CascadiaCode.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+  font-family: 'Cascadia Mono';
+  src: url("../fonts/woff2/CascadiaCode.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
@@ -30,8 +30,6 @@ body {
   height: 100vh;            /* Optional: makes sure the container takes up the full viewport height */
   text-align: center;       /* Centers the text inside the elements */
 }
-
-
 
 h1 {
   text-align: center;
@@ -100,6 +98,28 @@ p {
 
 .scale {
   scale: 2;
+}
+
+.scale-bar {
+  scale: 1.5;
+}
+
+@keyframes rainbow {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+
+/* Apply the animation to elements with the specific class */
+.rainbow-text {
+  font-size: 75px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  animation: rainbow 5s linear infinite;
 }
 
 /* Style for clickable text to look like a button */
