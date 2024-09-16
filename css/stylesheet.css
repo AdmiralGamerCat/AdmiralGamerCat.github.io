@@ -1,4 +1,14 @@
-@font-face {
+html, body {
+    height:100%;
+    /* Disable Scroll */
+    overflow:hidden;
+  }
+  
+  div {
+    height: 100%;
+  }
+
+  @font-face {
     font-family: 'Cascadia Mono';
     src: url("../fonts/woff2/CascadiaCode.woff2") format("woff2");
     font-weight: normal;
@@ -12,7 +22,33 @@ body {
     font-family: "Cascadia Mono", sans-serif;
 }
 
+.centered {
+  display: flex;
+  justify-content: center;  /* Centers horizontally */
+  align-items: center;      /* Centers vertically */
+  flex-direction: column;   /* If you want the content stacked vertically */
+  height: 100vh;            /* Optional: makes sure the container takes up the full viewport height */
+  text-align: center;       /* Centers the text inside the elements */
+}
 
+
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.centered-link {
+  display: flex;           /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  text-decoration: none;   /* Remove underline from links */
+  color: inherit;          /* Inherit text color from parent */
+  font-size: 150%;
+}
 
 .function {
     color: #DBDCB0;
@@ -40,4 +76,239 @@ body {
 
 .comment {
 	color: #699855
+}
+
+.locked {
+  color: gray;
+}
+
+.unlocked {
+  color: whitesmoke;
+}
+
+.finished {
+  color: #719BD1;
+}
+
+.incorrect {
+  color: #B22222;
+}
+
+.correct {
+  color: #228B22;
+}
+
+.scale {
+  scale: 2;
+}
+
+/* Style for clickable text to look like a button */
+.button-text {
+  display: inline-block; /* Makes it behave like a block element for sizing */
+  margin-right: 15px;
+  padding: 10px 20px; /* Adds space inside the button */
+  font-size: 16px; /* Adjusts the text size */
+  font-weight: lighter; /* Makes the text bold */
+  text-align: center; /* Centers the text */
+  text-decoration: none; /* Removes the underline */
+  color: whitesmoke; /* Text color */
+  background-color: #1f1f1f; /* Background color */
+  border: 2px solid whitesmoke; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect */
+.button-text:hover {
+  background-color: whitesmoke; /* Darker background color on hover */
+  border-color: #1f1f1f; /* Darker border color on hover */
+  color: #1f1f1f; /* Ensure text color is white on hover */
+}
+
+/* Optional: Focus effect */
+.button-text:focus {
+  outline: none; /* Removes default focus outline */
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Adds custom focus ring */
+}
+
+/* Base hover effect class */
+.hover-effect {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+/* General hover effect */
+.hover-effect:hover {
+  transform: scale(var(--hover-scale, 1.2)); /* Scale effect, customizable */
+}
+
+/* Hover effect with icon change */
+.hover-icon-incorrect {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+}
+
+/* Default icon setup */
+.hover-icon-incorrect::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-play) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-incorrect:hover::before {
+  content: var(--icon-hover, "\f057"); /* New icon (fa-circle-xmark) */
+  font-weight: 400; /* Regular icon */
+}
+
+/* hover-icon-flag-regular */
+.hover-icon-flag-regular {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: whitesmoke; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-flag-regular::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-flag-regular:hover::before {
+  content: var(--icon-hover, "\f024"); /* Same icon (fa-circle-check) */
+  font-weight: 400; /* Regular icon */
+}
+
+/* hover-icon-flag-solid */
+.hover-icon-flag-solid {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: whitesmoke; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-flag-solid::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-flag-solid:hover::before {
+  content: var(--icon-hover, "\f024"); /* Same icon (fa-circle-check) */
+  font-weight: 900; /* Regular icon */
+}
+
+/* hover-icon-star-solid */
+.hover-icon-star-solid {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: whitesmoke; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-star-solid::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-star-solid:hover::before {
+  content: var(--icon-hover, "\f005"); /* Same icon (fa-circle-check) */
+  font-weight: 900; /* Regular icon */
+}
+
+/* hover-icon-star-regular */
+.hover-icon-star-regular {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: whitesmoke; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-star-regular::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-star-regular:hover::before {
+  content: var(--icon-hover, "\f005"); /* Same icon (fa-circle-check) */
+  font-weight: 400; /* Regular icon */
+}
+
+/* hover-icon-start-regular */
+.hover-icon-start-regular {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: whitesmoke; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-start-regular::before {
+  content: var(--icon-before, "\f024"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-start-regular:hover::before {
+  content: var(--icon-hover, "\f144"); /* Same icon (fa-circle-check) */
+  font-weight: 400; /* Regular icon */
+}
+
+/* hover-icon-correct */
+.hover-icon-correct {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400; /* Regular icon */
+  position: relative; /* Needed for positioning the border */
+  color: #228B22; /* Default color, change as needed */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Default icon setup for hover-icon2 */
+.hover-icon-correct::before {
+  content: var(--icon-before, "\f058"); /* Default icon (fa-circle-check) */
+}
+
+/* Icon change on hover to regular */
+.hover-icon-correct:hover::before {
+  content: var(--icon-hover, "\f058"); /* Same icon (fa-circle-check) */
+  font-weight: 400; /* Regular icon */
+}
+
+/* Color variations for hover effects specific to hover-icon2 */
+.hover-icon-correct:hover {
+  color: #228B22; /* Forest Green */
+}
+
+/* Optional: Scale effect for hover-icon2 */
+.hover-icon-correct:hover {
+  transform: scale(var(--hover-scale, 1.2)); /* Scale effect, customizable */
+}
+
+/* Color variations for hover effects */
+.hover-red:hover {
+  color: #B22222; /* Firebrick */
+}
+
+.hover-crimson:hover {
+  color: #DC143C; /* Crimson Red */
+}
+
+.hover-tomato:hover {
+  color: #FF6347; /* Tomato */
+}
+
+.hover-salmon:hover {
+  color: #FA8072; /* Salmon */
+}
+
+.hover-light-coral:hover {
+  color: #F08080; /* Light Coral */
 }

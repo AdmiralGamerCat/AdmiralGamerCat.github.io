@@ -1,23 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title></title>
-		<link rel="stylesheet" href="css/stylesheet.css">
-		<script src="js/script.js" defer></script>
-	</head>
-	<body>
-		<h1>
-			
-		</h1>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Opdracht 6</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- start-unlocked-current -->
+    <div id="start-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
 
-		<p>
-			<span class="variable">username</span><span> = </span><span class="string">"AdmiralGamerCat"</span><span class="comment"> # sets username variable to "AdmiralGamerCat"</span>
-		</p>
+        <p>start-unlocked-current</p>
 
-		<p>
-			<span class="function">print</span><span class="bracket">(</span><span class="value">f</span><span class="string">"hello</span><span class="curly_bracket"> {</span><span class="variable">username</span><span class="curly_bracket">}</span><span class="string">!"</span><span class="bracket">)</span><span class="comment"> # prints "hello {username}!" welcome message</span>
-		</p>
-		
-		<p>hello AdmiralGamerCat!</p>
-	</body>
+        <p>
+            <a class="hover-effect button-text" href="#start-incorrect-current">A</a>
+            <a class="hover-effect button-text" href="#start-correct-current">B</a>
+            <a class="hover-effect button-text" href="#start-incorrect-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-solid fa-circle-play unlocked hover-effect hover-icon-start-regular"></i>
+            <a id="line1" class="locked">---x---</a>
+            <i id="flag1-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="locked">---x---</a>
+            <i id="flag2-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- start-incorrect-current -->
+    <div id="start-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#start-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+            <a id="line1" class="locked">---x---</a>
+            <i id="flag1-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="locked">---x---</a>
+            <i id="flag2-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- start-correct-current -->
+    <div id="start-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+            <a id="line1" class="unlocked">-------</a>
+            <a href="#flag1-unlocked-current"><i id="flag1-icon" class="fa-regular fa-flag unlocked hover-effect hover-icon-flag-solid"></i></a>
+            <a id="line2" class="locked">---x---</a>
+            <i id="flag2-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag1-unlocked-current -->
+    <div id="flag1-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p>flag1-unlocked-current</p>
+
+        <p>
+            <a class="hover-effect button-text" href="#flag1-incorrect-current">A</a>
+            <a class="hover-effect button-text" href="#flag1-incorrect-current">B</a>
+            <a class="hover-effect button-text" href="#flag1-correct-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-solid fa-flag unlocked hover-effect hover-icon-flag-regular"></i>
+            <a id="line2" class="locked">---x---</a>
+            <i id="flag2-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag1-incorrect-current -->
+    <div id="flag1-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#flag1-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+            <a id="line2" class="locked">---x---</a>
+            <i id="flag2-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag1-correct-current -->
+    <div id="flag1-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+            <a id="line2" class="unlocked">-------</a>
+            <a href="#flag2-unlocked-current"><i id="flag2-icon" class="fa-regular fa-flag unlocked hover-effect hover-icon-flag-solid"></i></a>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag2-unlocked-current -->
+    <div id="flag2-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p>flag2-unlocked-current</p>
+
+        <p>
+            <a class="hover-effect button-text" href="#flag2-correct-current">A</a>
+            <a class="hover-effect button-text" href="#flag2-incorrect-current">B</a>
+            <a class="hover-effect button-text" href="#flag2-incorrect-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-solid fa-flag unlocked hover-effect hover-icon-flag-regular"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag2-incorrect-current -->
+    <div id="flag2-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#flag2-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+            <a id="line3" class="locked">---x---</a>
+            <i id="flag3-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag2-correct-current -->
+    <div id="flag2-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+            <a id="line3" class="unlocked">-------</a>
+            <a href="#flag3-unlocked-current"><i id="flag3-icon" class="fa-regular fa-flag unlocked hover-effect hover-icon-flag-solid"></i></a>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag3-unlocked-current -->
+    <div id="flag3-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p>flag3-unlocked-current</p>
+
+        <p>
+            <a class="hover-effect button-text" href="#flag3-correct-current">A</a>
+            <a class="hover-effect button-text" href="#flag3-incorrect-current">B</a>
+            <a class="hover-effect button-text" href="#flag3-incorrect-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-solid fa-flag unlocked hover-effect hover-icon-flag-regular"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag3-incorrect-current -->
+    <div id="flag3-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#flag3-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+            <a id="line4" class="locked">---x---</a>
+            <i id="flag4-icon" class="fa-regular fa-flag locked hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag3-correct-current -->
+    <div id="flag3-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+            <a id="line4" class="unlocked">-------</a>
+            <a href="#flag4-unlocked-current"><i id="flag4-icon" class="fa-regular fa-flag unlocked hover-effect hover-icon-flag-solid"></i></a>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag4-unlocked-current -->
+    <div id="flag4-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p>flag4-unlocked-current</p>
+
+        <p>
+            <a class="hover-effect button-text" href="#flag4-incorrect-current">A</a>
+            <a class="hover-effect button-text" href="#flag4-correct-current">B</a>
+            <a class="hover-effect button-text" href="#flag4-incorrect-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i id="flag4-icon" class="fa-solid fa-flag unlocked hover-effect hover-icon-flag-regular"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag4-incorrect-current -->
+    <div id="flag4-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#flag4-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+            <a id="line5" class="locked">---x---</a>
+            <i id="star1-icon" class="fa-regular fa-star locked hover-effect hover-icon-incorrect hover-red"></i>
+        </p>
+    </div>
+
+    <!-- flag4-correct-current -->
+    <div id="flag4-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+            <a id="line5" class="unlocked">-------</a>
+            <a href="#star1-unlocked-current"><i id="star1-icon" class="fa-regular fa-star unlocked hover-effect hover-icon-star-solid"></i></a>
+        </p>
+    </div>
+
+    <!-- star1-unlocked-current -->
+    <div id="star1-unlocked-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p>star1-unlocked-current</p>
+
+        <p>
+            <a class="hover-effect button-text" href="#star1-incorrect-current">A</a>
+            <a class="hover-effect button-text" href="#star1-incorrect-current">B</a>
+            <a class="hover-effect button-text" href="#star1-correct-current">C</a>
+        </p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i id="flag4-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="correct">-------</a>
+            <i id="star1-icon" class="fa-solid fa-star unlocked hover-effect hover-icon-star-regular"></i>
+        </p>
+    </div>
+
+    <!-- star1-incorrect-current -->
+    <div id="star1-incorrect-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect scale"></i></p>
+
+        <p><a class="hover-effect button-text" href="#star1-unlocked-current">retry</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i id="flag4-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="correct">-------</a>
+            <i id="star1x-icon" class="fa-solid fa-circle-xmark hover-effect hover-icon-incorrect incorrect"></i>
+        </p>
+    </div>
+
+    <!-- star1-correct-current -->
+    <div id="star1-correct-current">
+        <h1>Progression</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct scale"></i></p>
+
+        <p><a href="#start-unlocked-current" class="button-text">restart</a></p>
+
+        <hr>
+        <p class="centered-link">
+            <i class="fa-regular fa-circle-play correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line1" class="correct">-------</a>
+            <i id="flag1-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line2" class="correct">-------</a>
+            <i id="flag2-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line3" class="correct">-------</a>
+            <i id="flag3-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line4" class="correct">-------</a>
+            <i id="flag4-icon" class="fa-regular fa-flag correct hover-effect hover-icon-incorrect hover-red"></i>
+            <a id="line5" class="correct">-------</a>
+            <i class="fa-solid fa-circle-check hover-effect hover-icon-correct correct"></i>
+        </p>
+    </div>
+</body>
 </html>
