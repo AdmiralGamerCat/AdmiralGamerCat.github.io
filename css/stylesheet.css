@@ -200,6 +200,7 @@ p {
 .hover-icon-flag-solid:hover::before {
   content: var(--icon-hover, "\f024"); /* Same icon (fa-circle-check) */
   font-weight: 900; /* Regular icon */
+  animation: bounce;
 }
 
 /* hover-icon-star-solid */
@@ -311,4 +312,46 @@ p {
 
 .hover-light-coral:hover {
   color: #F08080; /* Light Coral */
+}
+
+/* Base styling for anything with the bounce class */
+.bounce {
+  display: inline-block;
+  animation: bounceEffectFA 1s infinite; /* Infinite bounce with Font Awesome style */
+}
+
+/* Font Awesome-style bounce animation */
+@keyframes bounceEffectFA {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at the original position */
+    animation-timing-function: ease-in-out; /* Smooth transition */
+  }
+  30% {
+    transform: translateY(-10px); /* Move up */
+    animation-timing-function: ease-in; /* Slows as it approaches the peak */
+  }
+  50% {
+    transform: translateY(-5px); /* Slight downward correction */
+    animation-timing-function: ease-out; /* Eases out as it comes down */
+  }
+  70% {
+    transform: translateY(-7px); /* Another upward bounce */
+    animation-timing-function: ease-in; /* Slows down again */
+  }
+}
+
+/* Base styling for anything with the beat class */
+.beat {
+  display: inline-block;
+  animation: beatEffect 1.2s infinite; /* Apply beat effect with 1 second duration */
+}
+
+/* Keyframes for the beat effect */
+@keyframes beatEffect {
+  0%, 100% {
+    transform: scale(1); /* Original size */
+  }
+  50% {
+    transform: scale(1.2); /* Slightly larger to create the 'beat' effect */
+  }
 }
