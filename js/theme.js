@@ -20,3 +20,15 @@ checkbox.addEventListener('change', () => {
     localStorage.setItem('theme', 'dark-mode');
   }
 });
+
+function openPopup(imageSrc) {
+  var popup = document.getElementById("image-popup");
+  var popupImg = document.getElementById("popup-img");
+  popup.style.display = "flex"; // Display the popup
+  popupImg.src = imageSrc; // Set the image source
+}
+
+function closePopup() {
+  var popup = document.getElementById("image-popup");
+  popup.style.display = "none"; // Hide the popup
+}

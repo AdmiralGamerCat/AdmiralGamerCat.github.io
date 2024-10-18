@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 /* Dark Mode */
 :root {
     /* Base Colors */
@@ -46,7 +48,7 @@
     --bg-body: #F8F9FA;
     --bg-container: #FFFFFF;
     --shadow-container: #D3D3D3;
-    --bg-navbar: #EFEFEF;
+    --bg-navbar: #F7F7F7;
     --bg-content: #F1F1F1;
     --shadow-content: #CCCCCC;
     --bg-content-hover: #E0E0E0;
@@ -92,6 +94,7 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    margin-right: 5px;
   }
   
   .checkbox {
@@ -168,7 +171,7 @@ body {
     margin: 0;
     background-color: var(--bg-body);
     color: var(--text-primary);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Source Code Pro",Arial, Helvetica, sans-serif;
     font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -212,10 +215,12 @@ nav ul li a {
     border-radius: 50px;
     margin: 5px;
     transition: background-color 0.5s ease, color 0.5s ease;
+    box-shadow: none;
 }
 
 nav ul li a:hover {
     background-color: var(--button-secondary-hover);
+    box-shadow: inset 0 4px 8px -2px var(--shadow-content);
 }
 
 nav ul li a:active {
@@ -262,6 +267,7 @@ nav ul li a:active {
 }
 
 .project-image {
+    position: relative;
     border-radius: 5px;
     background-color: var(--bg-container);
     color: var(--text-muted);
@@ -273,6 +279,33 @@ nav ul li a:active {
     justify-content: center;
     font-size: 4em;
     transition: background-color 0.5s ease, color 0.5s ease;
+    transition: scale 0.5s ease;
+}
+
+/* The icon will be hidden by default */
+.enlarge-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #EAEAEA;
+    font-size: 0.25em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show the icon when hovering over the image */
+.project-image:hover .enlarge-icon {
+    display: block; /* Show the icon */
+    opacity: 0.8; /* Optional: Add opacity for a smoother appearance */
+}
+
+.enlarge-icon:hover {
+    opacity: 1; /* Fully opaque when hovering over the icon */
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .project-text {
@@ -299,6 +332,8 @@ nav ul li a:active {
 }
 
 .box {
+    position: relative;
+    display: relative;
     border-radius: 5px;
     min-height: 250px;
     flex: 1 auto;
@@ -313,10 +348,19 @@ nav ul li a:active {
     justify-content: space-between;
     align-items: center;
     border-radius: 5px 5px 0px 0px;
-    background-color: var(--bg-navbar);
+    background-color: var(--bg-content-hover);
     padding: 0px 5px 0px 5px; /* ! */
     box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.box-bg-icon {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%); /* Vertically center */
+    font-size: 10em; /* Adjust size of icon */
+    pointer-events: none; /* Ensure icon is not interactive */
 }
 
 .box:hover {
@@ -326,6 +370,25 @@ nav ul li a:active {
     }
     box-shadow: 0 6px 12px var(--shadow-content);
     transform: scale(1.01);
+}
+
+
+.box p {
+    padding: 10px 5px 5px 10px;
+    user-select: none;
+    color: var(--text-primary);
+    z-index: 2;
+}
+
+.box i {
+    color: var(--text-primary);
+}
+
+.box .box-bg-icon {
+    color: var(--bg-navbar);
+    padding-top: 25px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    rotate: 10deg;
 }
 
 .box-title {
@@ -351,4 +414,53 @@ nav ul li a:active {
 
 .box-icons i:active {
     color: var(--button-danger-active);
+}
+
+.responsive-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Popup modal styling */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1000; /* Sits above other content */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    max-width: 90%; /* Limits the size of the image */
+    max-height: 90%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: var(--button-danger);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--button-danger-hover);
+}
+
+.close-btn:active {
+    background-color: var(--button-danger-active);
 }

@@ -23,7 +23,10 @@
             </nav>
             <section>
                 <div class="project-box">
-                    <div class="project-image"><i class="fa-solid fa-image"></i></div>
+                    <div class="project-image">
+                        <img src="images/quiz.gif" class="responsive-image" alt="project image" onclick="openPopup('images/quiz.gif')"></i>
+                        <i class="fa-solid fa-up-right-and-down-left-from-center enlarge-icon" onclick="openPopup('images/quiz.gif')"></i>
+                    </div>
                     <div class="project-text"></div>
                 </div>
                 <div class="project-box">
@@ -37,6 +40,12 @@
                 <div class="project-box">
                     <div class="project-image"><i class="fa-solid fa-image"></i></div>
                     <div class="project-text"></div>
+                </div>
+
+                <!-- Modal structure -->
+                <div id="image-popup" class="popup">
+                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <img class="popup-content" id="popup-img" alt="Popup Image">
                 </div>
             </section>
         </div>
