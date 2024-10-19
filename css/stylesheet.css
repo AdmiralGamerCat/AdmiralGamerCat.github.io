@@ -40,6 +40,7 @@
     --popup-success-bg: #3B6650;
     --popup-error-bg: #663B4A;
     --popup-warning-bg: #66543B;
+    --popup-warning-bg-hover: #8B7D5A;
 }
 
 /* Light Mode */
@@ -90,78 +91,81 @@
     margin: 15px;
   }
 
-  .theme-toggle {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    margin-right: 5px;
-  }
-  
-  .checkbox {
-    display: none;
-  }
+.theme-toggle {
+margin-left: auto;
+display: flex;
+align-items: center;
+margin-right: 5px;
+}
 
-  .slider {
-    width: 60px;
-    height: 30px;
-    background-color: var(--bg-content);
-    display: block;
-    border-radius: 50px;
-    position: relative;
-    cursor: pointer;
-    box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  
-  .slider::after {
-    content: '';
-    position: absolute;
-    height: 24px;
-    background-color: var(--button-primary-active);
-    border-radius: 50%;
-    top: 3px;
-    left: 3px;
-    transition: 0.3s;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  .checkbox:checked + .slider {
-    background-color: var(--bg-content);
-  }
-  
-  .checkbox:checked + .slider::after {
-    transform: translateX(30px);
-  }  
+.checkbox {
+display: none;
+}
 
-  /* Base Slider Circle */
+.slider {
+width: 60px;
+height: 30px;
+background-color: var(--bg-content);
+display: block;
+border-radius: 50px;
+position: relative;
+cursor: pointer;
+box-shadow: inset 0 4px 8px -2px var(--shadow-content);
+transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
 .slider::after {
-    content: '\f186'; /* moon */
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 14px;
-    color: var(--bg-content-hover);
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    top: 3px;
-    left: 3px;
-    transition: 0.3s;
-  }
-  
-  /* When checkbox is checked, display moon icon */
-  .checkbox:checked + .slider::after {
-    content: '\f185'; /* sun */
-    color: var(--bg-container); /* Adjust color if needed */
-    transform: translateX(30px);
-  }  
+content: '';
+position: absolute;
+height: 24px;
+background-color: var(--button-primary-active);
+border-radius: 50%;
+top: 3px;
+left: 3px;
+transition: 0.3s;
+transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.checkbox:checked + .slider {
+background-color: var(--bg-content);
+}
+
+.checkbox:checked + .slider::after {
+transform: translateX(30px);
+}  
+
+/* Base Slider Circle */
+.slider::after {
+content: '\f186'; /* moon */
+font-family: "Font Awesome 5 Free";
+font-weight: 900;
+font-size: 14px;
+color: var(--bg-content-hover);
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 24px;
+height: 24px;
+top: 3px;
+left: 3px;
+transition: 0.3s;
+}
+
+/* When checkbox is checked, display moon icon */
+.checkbox:checked + .slider::after {
+content: '\f185'; /* sun */
+color: var(--bg-container); /* Adjust color if needed */
+transform: translateX(30px);
+}
 
 * {
+    color: var(--text-primary);
+    transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease, border-radius 0.5s ease, transform 0.5s ease, scale 0.5s ease, padding 0.5s ease, opacity 0.1s ease;
+    font-family: "Source Code Pro", "Consolas", "Courier New", monospace;
     padding: 0;
     margin: 0;
-    color: #EAEAEA
+    box-sizing: border-box;
 }
 
 body {
@@ -169,30 +173,33 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    font-family: "Source Code Pro",Arial, Helvetica, sans-serif;
     font-size: 16px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-body);
 }
+
 #container {
     width: 100%;
     max-width: 1200px;
     min-height: 100vh;
     background-color: var(--bg-container);
-    margin: 0 auto;
-    padding: 0 15px;
-    box-shadow: 0 4px 30px var(--shadow-container);
-    transition: background-color 0.5s ease, color 0.5s ease;
+    box-shadow: 0px 4px 30px var(--shadow-container);
 }
+
+#container > .fade-in {
+    opacity: 0; /* Initially invisible */
+    transition: opacity 1s ease; /* Smooth fade-in effect */
+}
+
+#container.loaded > .fade-in {
+    opacity: 1; /* Fade in on load */
+}
+
 
 nav {
     background-color: var(--bg-navbar);
     border-radius: 50px;
     margin: 15px;
     box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
 }
 
 nav ul {
@@ -203,6 +210,7 @@ nav ul {
     margin: 5px;
 }
 
+/* basic button styling */
 nav ul li a {
     text-decoration: none;
     display: inline-block;
@@ -210,257 +218,183 @@ nav ul li a {
     color: #EAEAEA;
     background-color: var(--button-secondary);
     font-weight: bold;
-    min-width: 70px;
+    min-width: 97px;
     text-align: center;
     border-radius: 50px;
-    margin: 5px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-    box-shadow: none;
+    margin: 5px 5px 5px 0px;
+}
+
+nav ul li a i {
+    color: #EAEAEA;
 }
 
 nav ul li a:hover {
-    background-color: var(--button-secondary-hover);
     box-shadow: inset 0 4px 8px -2px var(--shadow-content);
+    background-color: var(--button-secondary-hover);
 }
 
 nav ul li a:active {
     background-color: var(--button-secondary-active);
 }
 
-.current {
+/* primary button styling */
+.primary {
     background-color: var(--button-primary);
 }
 
-.current:hover {
+.primary:hover {
     background-color: var(--button-primary-hover);
 }
 
-.current:active {
+.primary:active {
     background-color: var(--button-primary-active);
 }
 
-/* projects */
-.project-box {
-    border-radius: 5px;
-    min-height: 250px;
+/* basic box styling */
+.box {
     background-color: var(--bg-content);
     margin: 15px;
-    box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease
-}
-
-.project-box:hover {
-    background-color: var(--bg-content-hover);
-    transition: background-color 0.5s ease, color 0.5s ease;
-    transform: scale(1.01);
-    box-shadow: 0 6px 12px var(--shadow-content);
-}
-
-.project-box:hover .project-image,
-.project-box:hover .project-text {
-    background-color: var(--bg-content);
-    color: var(--text-primary);
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.project-image {
-    position: relative;
-    border-radius: 5px;
-    background-color: var(--bg-container);
-    color: var(--text-muted);
-    height: 200px;
-    width: 30%;
-    margin-left: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4em;
-    transition: background-color 0.5s ease, color 0.5s ease;
-    transition: scale 0.5s ease;
-}
-
-/* The icon will be hidden by default */
-.enlarge-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: #EAEAEA;
-    font-size: 0.25em;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Show the icon when hovering over the image */
-.project-image:hover .enlarge-icon {
-    display: block; /* Show the icon */
-    opacity: 0.8; /* Optional: Add opacity for a smoother appearance */
-}
-
-.enlarge-icon:hover {
-    opacity: 1; /* Fully opaque when hovering over the icon */
-}
-
-.project-image:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.project-text {
-    border-radius: 5px;
-    height: 200px;
-    margin-left: 25px;
-    margin-right: 25px;
-    background-color: var(--bg-container);
-    flex: 1 1 45%;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.toggle-btn {
-    padding: 10px 20px;
-    background-color: var(--button-primary);
-    color: var(--text-primary);
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.toggle-btn:hover {
-    background-color: var(--button-primary-hover);
-}
-
-.box {
-    position: relative;
-    display: relative;
-    border-radius: 5px;
+    border-radius: 25px;
     min-height: 250px;
-    flex: 1 auto;
-    background-color: var(--bg-content);
-    margin: 0px 15px 15px 15px;
     box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.box p {
+    user-select: none;
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+.box:hover {
+    scale: 1.01;
+    box-shadow: 0 6px 12px var(--shadow-content);
+    background: linear-gradient(135deg, var(--bg-content), var(--bg-content), var(--bg-content-hover));
 }
 
 .box-bar {
+    background-color: var(--button-primary);
+    border-radius: 25px 25px 0px 0px;
+    box-shadow: inset 0 4px 8px -2px var(--shadow-content);
+    box-shadow: 0 4px 8px -2px var(--shadow-content);
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.box-bar:hover {
     border-radius: 5px 5px 0px 0px;
-    background-color: var(--bg-content-hover);
-    padding: 0px 5px 0px 5px; /* ! */
-    box-shadow: inset 0 4px 8px -2px var(--shadow-content);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    background-color: var(--button-primary-hover);
+}
+
+.box-bar .box-title {
+    color: var(--text-secondary);
+    padding: 5px 5px 5px 15px;
+    user-select: none;
+}
+
+
+.box-bar:hover .box-title {
+    color: var(--text-primary);
+    padding: 5px;
+}
+
+.box-date {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
 }
 
 .box-bg-icon {
     position: absolute;
-    top: 50%;
     right: 10%;
-    transform: translateY(-50%); /* Vertically center */
-    font-size: 10em; /* Adjust size of icon */
-    pointer-events: none; /* Ensure icon is not interactive */
-}
-
-.box:hover {
-    box-shadow: none;
-    .box-bar {
-        box-shadow: none;
-    }
-    box-shadow: 0 6px 12px var(--shadow-content);
-    transform: scale(1.01);
-}
-
-
-.box p {
-    padding: 10px 5px 5px 10px;
-    user-select: none;
-    color: var(--text-primary);
-    z-index: 2;
-}
-
-.box i {
-    color: var(--text-primary);
-}
-
-.box .box-bg-icon {
-    color: var(--bg-navbar);
-    padding-top: 25px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-    rotate: 10deg;
-}
-
-.box-title {
+    top: calc(10px + 50%); /* Vertical center minus the height of the box-bar */
+    transform: translateY(-50%);
+    font-size: 10em;
+    rotate: 15deg;
     color: var(--text-secondary);
-    padding: 5PX;
-    user-select: none;
+    opacity: 0.1;
+    pointer-events: none; /* Makes sure it doesn't interfere with any user actions */
 }
 
-.box-icons {
-    cursor: pointer;
-    margin-right: 5px;
-    transition: color 0.3s ease;
+/* box-bar colors */
+
+.update {
+    background-color: var(--popup-warning-bg);
 }
 
+.update:hover {
+    background-color: var(--popup-warning-bg-hover);
+}
+
+/* box-icons */
 .box-icons i {
-    color: var(--button-danger);
+    cursor: pointer;
+    padding: 5px 15px 5px 5px;
+    transition: padding 0.5s ease, opacity 0.5s ease, color 0.5s ease;
+    opacity: 0;
 }
 
-.box-icons i:hover {
-    color: var(--button-danger-hover);
-    font-weight: 900;
+.box:hover .box-icons i {
+    opacity: 1;
+    color: var(--text-secondary);
 }
 
-.box-icons i:active {
-    color: var(--button-danger-active);
+.box-bar:hover .box-icons i {
+    padding: 10px;
+    color: var(--text-primary);
 }
 
-.responsive-image {
+/* popup */
+.popup {
+    position: fixed;
+    top: -100vh;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
+    transition: top 0ms ease-in-out 300ms;
 }
 
-/* Popup modal styling */
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1000; /* Sits above other content */
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    max-width: 90%; /* Limits the size of the image */
-    max-height: 90%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close-btn {
+.popup .overlay {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    background-color: var(--button-danger);
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background for overlay */
+    opacity: 0;
+    transition: opacity 100ms ease-in-out 200ms;
 }
 
-.close-btn:hover {
-    background-color: var(--button-danger-hover);
+.popup .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5); /* Scale the popup to make it larger */
+    width: auto;
+    max-width: 80%; /* Adjust size relative to the screen */
+    max-height: 80%; /* Keep the height proportional */
+    padding: 0; /* No padding */
+    border-radius: 25px;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
 }
 
-.close-btn:active {
-    background-color: var(--button-danger-active);
+.popup.active {
+    top: 0;
+    transition: top 0ms ease-in-out 0ms;
 }
+
+.popup.active .overlay {
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.popup.active .popup-content {
+    transform: translate(-50%, -50%) scale(1); /* Restore size when active */
+    opacity: 1;
+}
+
