@@ -318,6 +318,7 @@ nav ul li a:active {
     color: var(--text-secondary);
     opacity: 0.1;
     pointer-events: none; /* Makes sure it doesn't interfere with any user actions */
+    filter: drop-shadow(2px 4px 4px var(--button-primary-active));
 }
 
 /* box-bar colors */
