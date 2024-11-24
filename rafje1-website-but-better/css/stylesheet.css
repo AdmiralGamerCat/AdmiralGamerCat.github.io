@@ -79,3 +79,11 @@ footer {
 #image-container .right-image {
     border-radius: 0px 5px 5px 0px;
 }
+.credits-box {
+    margin-top: 30%;
+    padding: 15px;
+    background-color: #2196F3;
+}
+.credits-box a {
+    font-size: 20px;
+}
