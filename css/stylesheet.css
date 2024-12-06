@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #121212;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#container {
+    max-width: 1600px;
+    height: 100vh;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+nav {
+    background-color: #282828;
+    border-radius: 6px;
+    padding: 4px 6px;
+    margin: 10px;
+    transform: rotateX(10deg); /* Rotates the navbar along the X-axis */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
+    transition: transform 0.3s ease; /* Smooth animation for hover */
+}
+nav:hover {
+    transform: rotateX(0deg);
+}
+nav:hover ul li a {
+    box-shadow: 0px 5px 0px #ca3b35;
+    transform: translateX(0px) translateY(-5px);
+}
+nav ul {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    list-style: none;
+}
+nav ul li a {
+    display: inline-block;
+    border: 2px solid #d4584c;
+    background-color: #d4584c;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transform: translateY(-5px) translateX(-3px);
+    box-shadow: 3px 5px 0px #ca3b35;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+}
+nav ul li a:hover {
+    background-color: #de7163;
+    border: 2px solid #de7163;
+    box-shadow: 0px 5px 0px #d4584c;
+}
+nav ul li a:active {
+    transform: translateY(0px);
+    box-shadow: none;
+    background-color: #ca3b35;
+    border: 2px solid #ca3b35;
+}
