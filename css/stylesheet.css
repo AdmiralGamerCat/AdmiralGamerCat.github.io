@@ -54,10 +54,25 @@ nav ul li a:hover {
     background-color: #de7163;
     border: 2px solid #de7163;
     box-shadow: 0px 5px 0px #d4584c;
+    animation: glint 0.3s linear;
 }
 nav ul li a:active {
     transform: translateY(0px);
     box-shadow: none;
     background-color: #ca3b35;
     border: 2px solid #ca3b35;
+}
+@keyframes glint {
+    20% {
+        background-image: linear-gradient(to bottom right, white, #de7163, #de7163, #de7163);
+    }
+    40% {
+        background-image: linear-gradient(to bottom right, #de7163, white, #de7163, #de7163);
+    }
+    60% {
+        background-image: linear-gradient(to bottom right, #de7163, #de7163, white, #de7163);
+    }
+    80% {
+        background-image: linear-gradient(to bottom right, #de7163, #de7163, #de7163, white);
+    }
 }
