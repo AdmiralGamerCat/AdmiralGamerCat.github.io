@@ -11,6 +11,7 @@ body {
     height: 100vh;
     margin: 0 auto;
     perspective: 1000px;
+    overflow: hidden;
 }
 nav {
     background-color: #282828;
@@ -25,6 +26,10 @@ nav {
     opacity: 0;
     transform: rotateX(20deg);
     transition: transform 0.6s ease, opacity 0.6s ease;
+}
+nav ul {
+    display: flex;
+    flex-direction: row;
 }
 nav[data-page-loaded="true"] {
     opacity: 1;
@@ -59,7 +64,7 @@ nav ul li a {
     border-radius: 6px;
     cursor: pointer;
     transform: translateZ(10px) rotateX(-10deg);
-    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, background-image 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
     transform-style: preserve-3d;
     text-decoration: none;
 }
@@ -80,6 +85,14 @@ nav ul li a.active:hover {
 .current {
     transform: translateY(-5px);
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
+}
+#profile-icon {
+    display: inline-block;
+    height: 100%;
+    border-radius: 50%;
+    width: auto;
+    background-color: red;
+    display: none;
 }
 @keyframes glint {
     20% {
