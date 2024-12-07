@@ -4,17 +4,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>AdmiralGamerCat's page</title>
-		<link rel="stylesheet" href="css/stylesheet.css">
+		<link rel="stylesheet" href="../css/stylesheet.css">
 	</head>
 	<body>
 		<div id="container">
 			<nav>
 				<ul>
 					<div class="perspective-wrapper">
-						<li><a href="#" class="current">home</a></li>
+						<li><a href="../index.html">home</a></li>
 					</div>
 					<div class="perspective-wrapper">
-						<li><a href="pages/projects.html">projects</a></li>
+						<li><a href="#" class="current">projects</a></li>
 					</div>
 					<div class="perspective-wrapper">
 						<li><a href="#">about</a></li>
@@ -34,11 +34,11 @@
 					// Remove the "active" class after 0.3s
 					setTimeout(() => {
 						button.classList.remove("active");
-					}, 300);
+					}, 100);
 				});
 			});
 
-			document.addEventListener("DOMContentLoaded", () => {
+            document.addEventListener("DOMContentLoaded", () => {
 				const nav = document.querySelector("nav");
 				nav.setAttribute("data-page-loaded", "true");
 			});

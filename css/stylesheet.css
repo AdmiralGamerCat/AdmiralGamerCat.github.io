@@ -21,12 +21,22 @@ nav {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
     transition: transform 0.3s ease; /* Smooth animation for hover */
 }
+nav {
+    opacity: 0;
+    transform: rotateX(20deg);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+nav[data-page-loaded="true"] {
+    opacity: 1;
+    transform: rotateX(10deg);
+}
 nav:hover {
     transform: rotateX(0deg);
 }
 nav:hover ul li a {
-    box-shadow: 0px 5px 0px #ca3b35;
     transform: translateX(0px) translateY(-5px);
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
+    box-shadow: none;
 }
 nav ul {
     display: flex;
@@ -34,9 +44,11 @@ nav ul {
     column-gap: 8px;
     list-style: none;
 }
+.perspective-wrapper {
+    perspective: 500px;
+}
 nav ul li a {
     display: inline-block;
-    border: 2px solid #d4584c;
     background-color: #d4584c;
     color: white;
     font-weight: bold;
@@ -46,21 +58,28 @@ nav ul li a {
     padding: 10px 8px;
     border-radius: 6px;
     cursor: pointer;
-    transform: translateY(-5px) translateX(-3px);
-    box-shadow: 3px 5px 0px #ca3b35;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+    transform: translateZ(10px) rotateX(-10deg);
+    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    text-decoration: none;
 }
 nav ul li a:hover {
     background-color: #de7163;
-    border: 2px solid #de7163;
-    box-shadow: 0px 5px 0px #d4584c;
     animation: glint 0.3s linear;
 }
-nav ul li a:active {
+nav ul li a:active, nav ul li a.active {
     transform: translateY(0px);
     box-shadow: none;
     background-color: #ca3b35;
-    border: 2px solid #ca3b35;
+}
+nav ul li a.active:hover {
+    background-color: #ca3b35; /* Maintain active state color */
+    box-shadow: none; /* Prevent hover effects */
+    transform: translateY(0px); /* Prevent hover lift */
+}
+.current {
+    transform: translateY(-5px);
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
 }
 @keyframes glint {
     20% {
@@ -74,5 +93,16 @@ nav ul li a:active {
     }
     80% {
         background-image: linear-gradient(to bottom right, #de7163, #de7163, #de7163, white);
+    }
+}
+@media (max-width: 768px) {
+    nav {
+        perspective: 800px;
+        transform: rotateX(5deg);
+    }
+}
+@media (min-width: 1200px) {
+    #container {
+        perspective: 1500px;
     }
 }
