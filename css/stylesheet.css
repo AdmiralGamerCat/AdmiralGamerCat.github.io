@@ -14,9 +14,8 @@ body {
     overflow: hidden;
 }
 nav {
-    background-color: #282828;
+    background-color: #212121;
     border-radius: 6px;
-    padding: 4px 6px;
     margin: 10px;
     transform: rotateX(10deg); /* Rotates the navbar along the X-axis */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
@@ -43,6 +42,10 @@ nav:hover ul li a {
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
     box-shadow: none;
 }
+nav:hover #profile-icon {
+    width: 20px;
+    transition: 0.3s ease;
+}
 nav ul {
     display: flex;
     flex-direction: row;
@@ -54,13 +57,14 @@ nav ul {
 }
 nav ul li a {
     display: inline-block;
-    background-color: #d4584c;
+    background-color: #4CAF50;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
     padding: 10px 8px;
+    margin: 4px 0px 4px 6px;
     border-radius: 6px;
     cursor: pointer;
     transform: translateZ(10px) rotateX(-10deg);
@@ -69,43 +73,49 @@ nav ul li a {
     text-decoration: none;
 }
 nav ul li a:hover {
-    background-color: #de7163;
+    background-color: #388E3C;
     animation: glint 0.3s linear;
 }
 nav ul li a:active, nav ul li a.active {
     transform: translateY(0px);
     box-shadow: none;
-    background-color: #ca3b35;
+    background-color: #2C6B36;
 }
 nav ul li a.active:hover {
-    background-color: #ca3b35; /* Maintain active state color */
-    box-shadow: none; /* Prevent hover effects */
-    transform: translateY(0px); /* Prevent hover lift */
+    background-color: #2C6B36;
+    box-shadow: none;
+    transform: translateY(0px);
 }
 .current {
     transform: translateY(-5px);
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
+    background-color: #388E3C;
 }
 #profile-icon {
-    display: inline-block;
-    height: 100%;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    width: auto;
-    background-color: red;
-    display: none;
+    margin: 4px 6px 0px 0px;
+    background-image: url(../images/guus.png);
+    background-color: unset;
+    background-size: cover;
+    transition: width 0.3s ease transform 0.3s ease;
+}
+#profile-icon:hover {
+    animation: none;
 }
 @keyframes glint {
     20% {
-        background-image: linear-gradient(to bottom right, white, #de7163, #de7163, #de7163);
+        background-image: linear-gradient(to bottom right, white, #388E3C, #388E3C, #388E3C);
     }
     40% {
-        background-image: linear-gradient(to bottom right, #de7163, white, #de7163, #de7163);
+        background-image: linear-gradient(to bottom right, #388E3C, white, #388E3C, #388E3C);
     }
     60% {
-        background-image: linear-gradient(to bottom right, #de7163, #de7163, white, #de7163);
+        background-image: linear-gradient(to bottom right, #388E3C, #388E3C, white, #388E3C);
     }
     80% {
-        background-image: linear-gradient(to bottom right, #de7163, #de7163, #de7163, white);
+        background-image: linear-gradient(to bottom right, #388E3C, #388E3C, #388E3C, white);
     }
 }
 @media (max-width: 768px) {
