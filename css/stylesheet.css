@@ -1,12 +1,15 @@
+@import url(colors.css);
 * {
     padding: 0;
     margin: 0;
 }
 body {
-    background-color: #121212;
+    background-color: var(--body-bg);
     font-family: Arial, Helvetica, sans-serif;
 }
 #container {
+    display: flex;
+    flex-direction: column;
     max-width: 1600px;
     height: 100vh;
     margin: 0 auto;
@@ -14,12 +17,12 @@ body {
     overflow: hidden;
 }
 nav {
-    background-color: #212121;
+    background-color: var(--navbar-bg);
     border-radius: 6px;
-    margin: 10px;
-    transform: rotateX(10deg); /* Rotates the navbar along the X-axis */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
-    transition: transform 0.3s ease; /* Smooth animation for hover */
+    margin: 10px 10px 5px 10px;
+    transform: rotateX(10deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 .nav-container {
     display: flex;
@@ -58,7 +61,7 @@ nav ul {
 }
 nav ul li a {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color: var(--btn-bg);
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -74,25 +77,25 @@ nav ul li a {
     text-decoration: none;
 }
 nav ul li a:hover {
-    background-color: #388E3C;
+    background-color: var(--btn-hover-bg);
     animation: glint 0.3s linear;
     scale: 1.1;
 }
 nav ul li a:active {
     transform: translateY(0px);
     box-shadow: none;
-    background-color: #2C6B36;
+    background-color: var(--btn-active-bg);
     scale: 1;
 }
-nav ul li a.active:hover {
-    background-color: #2C6B36;
-    box-shadow: none;
-    transform: translateY(0px);
-}
-.current {
+nav ul li a.current {
     transform: translateY(-5px);
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
-    background-color: #388E3C;
+    background-color: var(--btn-hover-bg);
+}
+nav ul li a.current:active {
+    scale: 1;
+    transform: translateY(0);
+    background-color: var(--btn-active-bg);
 }
 #profile-icon {
     width: 38px;
@@ -108,18 +111,21 @@ nav ul li a.active:hover {
     animation: none;
     scale: 1.1;
 }
+#profile-icon:active {
+    scale: 1;
+}
 @keyframes glint {
     20% {
-        background-image: linear-gradient(to bottom right, white, #388E3C, #388E3C, #388E3C);
+        background-image: linear-gradient(to bottom right, white, var(--btn-hover-bg), var(--btn-hover-bg), var(--btn-hover-bg));
     }
     40% {
-        background-image: linear-gradient(to bottom right, #388E3C, white, #388E3C, #388E3C);
+        background-image: linear-gradient(to bottom right, var(--btn-hover-bg), white, var(--btn-hover-bg), var(--btn-hover-bg));
     }
     60% {
-        background-image: linear-gradient(to bottom right, #388E3C, #388E3C, white, #388E3C);
+        background-image: linear-gradient(to bottom right, var(--btn-hover-bg), var(--btn-hover-bg), white, var(--btn-hover-bg));
     }
     80% {
-        background-image: linear-gradient(to bottom right, #388E3C, #388E3C, #388E3C, white);
+        background-image: linear-gradient(to bottom right, var(--btn-hover-bg), var(--btn-hover-bg), var(--btn-hover-bg), white);
     }
 }
 @media (max-width: 768px) {
@@ -132,4 +138,91 @@ nav ul li a.active:hover {
     #container {
         perspective: 1500px;
     }
+}
+#content-container {
+    margin: 10px;
+    height: 100%;
+    /* background-color: var(--navbar-bg); */
+    border-radius: 6px;
+}
+.box-1-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
+    grid-template-areas: 
+    'bar'
+    'body';
+    height: 350px;
+    width: 600px;
+    margin: 45px;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+.box-1-wrapper:hover .box-1-bg {
+    transform: rotateX(-20deg);
+}
+.box-1-wrapper:hover .box-1-bg-2 {
+    background-color: white;
+    transform: translateY(-30px);
+}
+.box-1-wrapper:hover .box-1-bar {
+    transform: translateY(20px);
+}
+.box-1-wrapper:hover .box-1-bg-2 p {
+    visibility: visible;
+}
+.box-1-wrapper:hover {
+    cursor: pointer;
+    transform: perspective(1000px) rotateY(10deg); /* Rotate slightly to the right */
+}
+.box-1-bar-bg {
+    grid-area: bar;
+    background-color: var(--secondary-accent-color);
+    margin-top: 10px;
+    box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 6px 6px 0px 0px;
+}
+.box-1-bar {
+    grid-area: bar;
+    background-color: var(--accent-color);
+    width: 30%;
+    border-radius: 6px 6px 0px 0px;
+    box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.5);
+    margin-left: 1em;
+    transition: transform 0.3s ease;
+}
+.box-1-bar p {
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+.box-1-bg-2 {
+    grid-area: body;
+    background-color: var(--secondary-accent-color);
+    transition: transform 0.3s, background-color 0.3s ease;
+    border-radius: 0px 0px 6px 6px;
+}
+.box-1-bg-2 p {
+    margin: 5px;
+    visibility: hidden;
+}
+.box-1-bg {
+    grid-area: body;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    background-color: var(--secondary-accent-color);
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+}
+.box-1-sticker {
+    background-color: var(--success-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
 }

@@ -1,0 +1,28 @@
+Body Background: #121212
+Navbar Background: #212121
+Primary Text: #E0E0E0
+Secondary Text: #B0B0B0
+Link Text: #1E88E5
+Link Text Hover: #42A5F5
+Placeholder Text: #757575
+Error Text: #D32F2F
+Accent Color: #64B5F6
+Secondary Accent Color: #FFEB3B
+Primary Button Background: #4CAF50
+Button Text Color: #FFFFFF
+Button Hover Background: #388E3C
+Button Active Background: #2C6B36
+Secondary Button Background: #757575
+Secondary Button Text Color: #E0E0E0
+Secondary Button Hover Background: #616161
+Secondary Button Active Background: #424242
+Navbar Link Color: #64B5F6
+Navbar Link Hover Color: #42A5F5
+Burger Menu Icon Color: #64B5F6
+Input Background: #2C2C2C
+Input Text Color: #E0E0E0
+Input Border: #444444
+Input Focused Border: #64B5F6
+Success Color: #66BB6A
+Warning Color: #FF9800
+Info Color: #29B6F6
