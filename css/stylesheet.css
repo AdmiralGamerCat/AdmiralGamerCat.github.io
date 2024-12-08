@@ -21,12 +21,13 @@ nav {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
     transition: transform 0.3s ease; /* Smooth animation for hover */
 }
-nav {
-    opacity: 0;
-    transform: rotateX(20deg);
-    transition: transform 0.6s ease, opacity 0.6s ease;
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 nav ul {
+    flex: 1;
     display: flex;
     flex-direction: row;
 }
@@ -91,18 +92,24 @@ nav ul li a.active:hover {
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
     background-color: #388E3C;
 }
-#profile-icon {
+#profile-container {
+    margin-right: 10px;
     width: 18px;
     height: 18px;
+}
+#profile-icon {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    margin: 4px 6px 0px 0px;
     background-image: url(../images/guus.png);
-    background-color: unset;
     background-size: cover;
-    transition: width 0.3s ease transform 0.3s ease;
+    background-position: center;
+    margin: 0px 8px 0px 0px;
+    transition: scale 0.3s ease;
 }
 #profile-icon:hover {
     animation: none;
+    scale: 1.1;
 }
 @keyframes glint {
     20% {
