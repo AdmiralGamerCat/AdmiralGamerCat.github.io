@@ -44,8 +44,8 @@ nav:hover ul li a {
     box-shadow: none;
 }
 nav:hover #profile-icon {
-    width: 20px;
-    transition: 0.3s ease;
+    transform: translateY(-5px);
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
 }
 nav ul {
     display: flex;
@@ -69,18 +69,20 @@ nav ul li a {
     border-radius: 6px;
     cursor: pointer;
     transform: translateZ(10px) rotateX(-10deg);
-    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, background-image 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    transition: scale 0.3s ease, transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, background-image 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
     transform-style: preserve-3d;
     text-decoration: none;
 }
 nav ul li a:hover {
     background-color: #388E3C;
     animation: glint 0.3s linear;
+    scale: 1.1;
 }
-nav ul li a:active, nav ul li a.active {
+nav ul li a:active {
     transform: translateY(0px);
     box-shadow: none;
     background-color: #2C6B36;
+    scale: 1;
 }
 nav ul li a.active:hover {
     background-color: #2C6B36;
@@ -92,20 +94,15 @@ nav ul li a.active:hover {
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.5));
     background-color: #388E3C;
 }
-#profile-container {
-    margin-right: 10px;
-    width: 18px;
-    height: 18px;
-}
 #profile-icon {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background-image: url(../images/guus.png);
     background-size: cover;
     background-position: center;
-    margin: 0px 8px 0px 0px;
-    transition: scale 0.3s ease;
+    margin: 0px 8px 0px 8px;
+    transition: scale 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 }
 #profile-icon:hover {
     animation: none;
