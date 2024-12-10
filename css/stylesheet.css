@@ -3,9 +3,13 @@
     padding: 0;
     margin: 0;
 }
+html {
+    scroll-behavior: smooth;
+}
 body {
     background-color: var(--body-bg);
     font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease;
 }
 .load {
     animation: load 0.6s ease-out forwards;
@@ -17,18 +21,42 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    user-select: none;
 }
-.wip img {
+.wip-img {
     border-radius: 6px;
     max-width: 500px;
     width: 100%;
     height: auto;
+    aspect-ratio: 500 / 500;
+    background-image: url(../images/coding-cat.gif);
+    background-size: cover;
+    transition: background-image 0.3s ease;
+}
+.wip-img:hover {
+    background-image: url(../images/cute-cat.gif);
+}
+.wip-img:hover ~ h1::after {
+    content: " :3";
+}
+body.rainbow-background {
+    animation: rainbow-background 5s linear infinite;
+}
+@keyframes rainbow-background {
+    0% { background-color: #ff0000; }
+    16.7% { background-color: #ff9900; }
+    33.3% { background-color: #ffff00; }
+    50% { background-color: #00ff00; }
+    66.7% { background-color: #0000ff; }
+    83.3% { background-color: #4b0082; }
+    100% { background-color: #ff0000; }
 }
 .wip h1 {
     color: var(--primary-text);
     text-transform: uppercase;
     letter-spacing: 4px;
     margin-top: 10px;
+    text-align: center;
 }
 #container {
     display: flex;
@@ -124,8 +152,10 @@ nav ul li a.current:active {
     background-color: var(--btn-active-bg);
 }
 #profile-icon {
-    width: 38px;
-    height: 38px;
+    max-width: 38px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 38 / 38;
     border-radius: 50%;
     background-image: url(../images/guus.png);
     background-size: cover;
@@ -346,8 +376,9 @@ nav ul li a.current:active {
     transform: rotateX(-20deg);
 }
 .box-2-wrapper:hover .box-2-bg-2 {
-    background-color: white;
-    transform: translateY(-30px);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    transform: translateY(-60px);
 }
 .box-2-wrapper:hover .box-2-bar {
     transform: translateY(20px);
@@ -357,7 +388,7 @@ nav ul li a.current:active {
 }
 .box-2-wrapper:hover {
     cursor: pointer;
-    transform: perspective(1000px) rotateY(10deg); /* Rotate slightly to the right */
+    transform: perspective(1000px) rotateY(10deg);
 }
 .box-2-bar-bg {
     grid-area: bar;
@@ -386,6 +417,7 @@ nav ul li a.current:active {
     background-color: var(--secondary-accent-color);
     transition: transform 0.3s, background-color 0.3s ease;
     border-radius: 0px 0px 6px 6px;
+    border-radius: 6px;
 }
 .box-2-bg-2 p {
     margin: 5px;
