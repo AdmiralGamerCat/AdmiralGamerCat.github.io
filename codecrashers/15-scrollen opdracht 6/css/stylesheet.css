@@ -38,6 +38,7 @@ body {
 .scrolling-img-container {
     width: 50vw;
     height: auto;
+    max-height: 90vh;
     aspect-ratio: 1.23/1;
     background-color: var(--bg-color-dark-transparent);
     backdrop-filter: blur(1px);
