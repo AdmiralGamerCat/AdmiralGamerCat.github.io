@@ -15,10 +15,17 @@ html {
     width: 100%;
     min-height: 100vh;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* console styles */
 #console {
+    position: absolute;
+    top: 3vh;
+    left: 5vw;
     display: none;
     flex-direction: column;
     border: 2px solid black;
@@ -93,10 +100,32 @@ html {
 
 /* scan button styles */
 #scanBtn {
-    background-color: #c2fe0d;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 2px;
     padding: 1rem 2rem;
     width: fit-content;
     user-select: none;
     cursor: pointer;
     position: relative;
+    background-color: #c2fe0d;
+    width: 160px;
+    text-align: center;
+}
+
+#scanBtn:hover {
+    color: white;
+}
+
+#scanBtn:active {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+#scanBtn.scanning {
+    color: white;
+    background-color: black;
+    cursor: not-allowed;
+    border: none;
 }

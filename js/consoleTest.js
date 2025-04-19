@@ -63,6 +63,9 @@ async function printConsoleLines() {
     consoleOpen = true;
     loopCount = 0;
     scanBtn.removeEventListener("click", printConsoleLines); // disable scan button
+    scanBtn.classList.add("scanning");
+    scanBtn.textContent = "SCANNING";
+
 
     while (loopCount < MsgCount) {
         if (!consoleOpen) { // prevent printing when console gets closed
@@ -79,12 +82,16 @@ async function printConsoleLines() {
         ? `<p class="succes"># CONNECTION HAS BEEN SUCCESSFUL</p>`
         : `<p class="fail"># CONNECTION HAS FAILED</p>`;
     
-    consoleInner.innerHTML += (!consoleOpen ? `<p class = "warning"># CONSOLE CLOSED</p>` : finalMsg);
+    consoleInner.innerHTML += (consoleOpen ? finalMsg : "");
     consoleInner.scrollTop = consoleInner.scrollHeight;
     scanBtn.addEventListener("click", printConsoleLines); // re-enable scan button
+    scanBtn.classList.remove("scanning");
+    scanBtn.textContent = "SCAN";
+
 }
 
 function closeConsole() {
+    consoleInner.innerHTML += `<p class = "warning"># CONSOLE CLOSED</p>`;
     consoleElement.style.display = "none";
     consoleOpen = false
 }
