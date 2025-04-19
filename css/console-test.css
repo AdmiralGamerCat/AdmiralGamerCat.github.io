@@ -19,19 +19,19 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
 
 /* console styles */
 #console {
-    position: absolute;
-    top: 3vh;
-    left: 5vw;
     display: none;
     flex-direction: column;
     border: 2px solid black;
     width: fit-content;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
-    min-width: 500px;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 2.1/1;
 }
 
 #console:hover {
