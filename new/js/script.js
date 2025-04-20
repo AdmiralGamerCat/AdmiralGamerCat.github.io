@@ -1,9 +1,15 @@
 const colors = [
-    'var(--accent-color)',
-    'var(--secondary-accent-color)',
-    'var(--success-color)',
-    'var(--error-text)',
-    'var(--warning-color)'
+    // 'var(--accent-color)',
+    // 'var(--secondary-accent-color)',
+    // 'var(--success-color)',
+    // 'var(--error-text)',
+    // 'var(--warning-color)'
+    "var(--link-text)",
+    "var(--link-text-hover)",
+    "var(--accent-color)",
+    "var(--navbar-link-color)",
+    "var(--navbar-link-hover-color)",
+    "var(--info-color)"
 ];
 
 const blocks = document.querySelectorAll('.block');
@@ -31,7 +37,7 @@ const items = document.querySelectorAll('.item');
 items.forEach((item, index) => {
     setTimeout(() => {
     item.classList.add('animate-in');
-    }, index * 400); // 0.1s delay between each item
+    }, index * 400);
 });
 }
 
@@ -44,5 +50,5 @@ setTimeout(() => {
 
     // Start the .item animations after loader is hidden
     animateItems();
-}, 2000); // Match loader display time
+}, 3000); // Match loader display time
 });
