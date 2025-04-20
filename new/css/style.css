@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding-left: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--body-bg);
+    perspective: 1000px;
+}
+
+@keyframes itemAppear {
+    0% {
+      transform: translateY(112%) scale(0.7, 1.2);
+      opacity: 0;
+    }
+  
+    12.5% {
+      transform: translateY(56%) scale(0.9, 1.05);
+    }
+  
+    25% {
+      transform: translateY(-2%) scale(1, 1);
+      opacity: 1;
+    }
+  
+    35%, 65% {
+      transform: translateY(0%) scale(1, 1);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(0%) scale(1, 1);
+      opacity: 1;
+    }
+}
+
+.item {
+    opacity: 0;
+    transform: translateY(112%) scale(0.7, 1.2);
+}
+.item.animate-in {
+    animation: itemAppear 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
