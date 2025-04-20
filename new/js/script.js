@@ -1,54 +1,46 @@
-const colors = [
-    // 'var(--accent-color)',
-    // 'var(--secondary-accent-color)',
-    // 'var(--success-color)',
-    // 'var(--error-text)',
-    // 'var(--warning-color)'
-    "var(--link-text)",
-    "var(--link-text-hover)",
-    "var(--accent-color)",
-    "var(--navbar-link-color)",
-    "var(--navbar-link-hover-color)",
-    "var(--info-color)"
-];
+"use strict";
 
-const blocks = document.querySelectorAll('.block');
+const loaderContainer = document.querySelector(".loader-container");
+const blocks = document.querySelectorAll(".block");
+const appearElements = document.querySelectorAll(".appear");
+let longestAnimationDelay = 1300;
+let animationLoopCount = 1;
 
-function changeColorOnHidden() {
-const hiddenBlocks = Array.from(blocks).filter(block => {
-    const style = getComputedStyle(block);
-    return style.opacity === '0';
-});
+document.addEventListener("DOMContentLoaded", () => { // adds delay to every appear item so they appear one after the other
+    appearElements.forEach((element, index) => {
+        const delay = index * 0.3;
+        element.style.animationDelay = `${delay}s`;
+    })
+})
 
-if (hiddenBlocks.length > 0) {
-    const randomBlock = hiddenBlocks[Math.floor(Math.random() * hiddenBlocks.length)];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    randomBlock.style.backgroundColor = randomColor;
+document.addEventListener("DOMContentLoaded", () => { // on page load start loading
+    console.log("page load started.")
+    loader()
+})
+
+function loader() {
+    document.body.style.overflowY = "hidden"; // removes scrollbar
+    loaderContainer.classList.remove("hidden"); // shows loaderContainer
+
+    blocks.forEach(block => { // sets the amount of loops
+        block.style.animationIterationCount = animationLoopCount;
+    })
+
+    const totalDuration = longestAnimationDelay + (2000 * animationLoopCount); // calculates the total load time
+
+    if (totalDuration < (appearElements.length * .3 * 1000)) { // checks if there's enough time to load all appearing elements
+        console.log(`Needed load time = ${(appearElements.length * .3 * 1000)}ms.`)
+        console.log(`Current load time = ${totalDuration}ms`)
+        console.log("Adding load time");
+        animationLoopCount++;
+        loader();
+        return;
+    } else { // if there is, stops loading
+        console.log("Enough load time added to load all appearing elements.")
+        setTimeout(() => {
+            loaderContainer.classList.add("hidden");
+            document.body.style.overflowY = "auto";
+            window.scrollTo(0, 0);
+        }, totalDuration);
+    }
 }
-}
-
-// Run regularly (match your animation loop timing)
-setInterval(changeColorOnHidden, 300); // adjust timing as needed
-
-// Animate .item elements with staggered delay
-function animateItems() {
-const items = document.querySelectorAll('.item');
-
-items.forEach((item, index) => {
-    setTimeout(() => {
-    item.classList.add('animate-in');
-    }, index * 400);
-});
-}
-
-// Show the loader on page load
-document.addEventListener("DOMContentLoaded", () => {
-const loader = document.querySelector('.loader-container');
-
-setTimeout(() => {
-    loader.classList.add('hidden');
-
-    // Start the .item animations after loader is hidden
-    animateItems();
-}, 3000); // Match loader display time
-});

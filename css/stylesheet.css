@@ -197,7 +197,7 @@ nav ul li a.current:active {
 }
 #content-container {
     margin: 10px;
-    height: 100%;
+    /* height: 100%; */
     /* background-color: var(--navbar-bg); */   
     border-radius: 6px;
 }
@@ -461,4 +461,17 @@ nav ul li a.current:active {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.box-wrapper.oof {
+    width: 100%;
+    height: 900px;
+    max-height: unset;
+    max-width: unset;
+}
+
+.box-wrapper.oof iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
 }

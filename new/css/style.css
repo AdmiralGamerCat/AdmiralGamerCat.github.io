@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-    padding-left: 0;
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
@@ -9,24 +9,25 @@
 html {
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color1);
 }
 
 #container {
     width: 100%;
     min-height: 100vh;
-    padding: 1rem;
-    background-color: var(--body-bg);
-    perspective: 1000px;
+    padding: 1em;
+    background-color: var(--bg-color1);
 }
 
-@keyframes itemAppear {
+/* appear / dissappear styles */
+@keyframes appearAnimation {
     0% {
-      transform: translateY(112%) scale(0.7, 1.2);
+      transform: translateY(110%) scale(0.7, 1.2);
       opacity: 0;
     }
   
     12.5% {
-      transform: translateY(56%) scale(0.9, 1.05);
+      transform: translateY(55%) scale(0.9, 1.05);
     }
   
     25% {
@@ -45,10 +46,43 @@ html {
     }
 }
 
-.item {
-    opacity: 0;
-    transform: translateY(112%) scale(0.7, 1.2);
+@keyframes disappearAnimation {
+    0% {
+        transform: translateY(0%) scale(1, 1);
+        opacity: 1;
+    }
+    15% {
+        transform: translateY(-1.5%) scale(1.02, 0.98);
+        opacity: 1;
+    }
+    35%, 65% {
+        transform: translateY(0%) scale(1, 1);
+        opacity: 1;
+    }
+    85% {
+        transform: translateY(-110%) scale(0.7, 1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-110%) scale(0.7, 1.2);
+        opacity: 0;
+    }
 }
-.item.animate-in {
-    animation: itemAppear 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+.appear {
+    animation: appearAnimation 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    transform: translateY(110%) scale(0.7, 1.2);
+    opacity: 0;
+}
+
+nav {
+    padding: 2em;
+    background-color: #64B5F6;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+nav h2 {
+    color: white;
 }

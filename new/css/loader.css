@@ -1,92 +1,78 @@
 .loader-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 2px solid white; */
+    backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    visibility: visible;
-    z-index: 1000;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.2s ease;
+    z-index: 999;
 }
 
 .loader-container.hidden {
+    user-select: none;
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
+}
+
+
+.loader-container.shown {
+    user-select: all;
+    opacity: 1;
+}
 
 .loader {
+    width: min(100%, 500px);
     aspect-ratio: 1/1;
-    width: 20%;
+    /* border: 2px solid whitesmoke; */
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: clamp(0.5rem, 1vw, 1rem);
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 
-    'block1 block2 block3'
-    'block4 block4 block5'
-    'block6 block7 block5';
+    'b1 b2 b3'
+    'b4 b4 b5'
+    'b6 b7 b5';
+    gap: clamp(0.75rem, 1vw, 1rem);
+    margin: 1em;
 }
 
 .block {
     background-color: whitesmoke;
-    width: 100%;
-    height: 100%;
     border-radius: 8px;
+    box-shadow: inset 0px 0px 10px white;
+    transform: translateY(110%);
     opacity: 0;
-    transform: translateY(112%);
-    transition: opacity 0.2s ease, background-color 0.2s ease;
-    animation: blocksAppear 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards infinite;
-    box-shadow: 0px -10px 10px rgba(0, 0, 0, 0.3), inset 0px 0px 10px rgba(0, 0, 0, 0.3);
+    animation: blockAnimation 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
-.block1 {   
-    grid-area: block1;
-}
+.block.b1 { grid-area: b1; animation-delay: 0;}
 
-.block2 {
-    grid-area: block2;
-    animation-delay: .2s;
-}
+.block.b2 { grid-area: b2; animation-delay: .2s;}
 
-.block3 {
-    grid-area: block3;
-    animation-delay: 0.4s;
-}
+.block.b3 { grid-area: b3; animation-delay: .4s;}
 
-.block4 {
-    grid-area: block4;
-    animation-delay: .6s;
-}
+.block.b4 { grid-area: b4; animation-delay: .6s;}
 
-.block5 {
-    grid-area: block5;
-    animation-delay: 0.8s;
-}
+.block.b5 { grid-area: b5; animation-delay: 1.3s;}
 
-.block6 {
-    grid-area: block6;
-    animation-delay: 1s;
-}
+.block.b6 { grid-area: b6; animation-delay: 1s;}
 
-.block7 {
-    grid-area: block7;
-    animation-delay: 1.2s;
-}
+.block.b7 { grid-area: b7; animation-delay: 1.2s;}
 
-@keyframes blocksAppear {
+@keyframes blockAnimation {
     0% {
-      transform: translateY(112%) scale(0.7, 1.2);
+      transform: translateY(110%) scale(0.7, 1.2);
       opacity: 0;
     }
   
     12.5% {
-      transform: translateY(56%) scale(0.9, 1.05);
+      transform: translateY(55%) scale(0.9, 1.05);
     }
   
     25% {
@@ -105,7 +91,7 @@
     }
   
     100% {
-      transform: translateY(-112%) scale(0.7, 1.2);
+      transform: translateY(-110%) scale(0.7, 1.2);
       opacity: 0;
     }
 }
