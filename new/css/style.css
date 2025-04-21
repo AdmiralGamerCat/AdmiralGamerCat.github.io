@@ -24,6 +24,8 @@ html {
     0% {
       transform: translateY(110%) scale(0.7, 1.2);
       opacity: 0;
+      user-select: none;
+      pointer-events: none;
     }
   
     12.5% {
@@ -43,46 +45,72 @@ html {
     100% {
       transform: translateY(0%) scale(1, 1);
       opacity: 1;
+      user-select: all;
+      pointer-events: all;
     }
 }
 
-@keyframes disappearAnimation {
+@keyframes dissappearAnimation {
     0% {
-        transform: translateY(0%) scale(1, 1);
+        transform: scale(1, 0.8) translateY(0);
         opacity: 1;
+        user-select: all;
+        pointer-events: all;
     }
+
     15% {
-        transform: translateY(-1.5%) scale(1.02, 0.98);
+        transform: scale(1, 0.75) translateY(5%);
         opacity: 1;
     }
-    35%, 65% {
-        transform: translateY(0%) scale(1, 1);
+
+    30% {
+        transform: scale(1, 0.85) translateY(10%);
         opacity: 1;
     }
-    85% {
-        transform: translateY(-110%) scale(0.7, 1.2);
+
+    50% {
+        transform: scale(0.9, 1.05) translateY(-25%);
+        opacity: 0.6;
+    }
+
+    70% {
+        transform: scale(0.8, 1.1) translateY(-50%);
         opacity: 0;
     }
+
     100% {
-        transform: translateY(-110%) scale(0.7, 1.2);
+        transform: scale(0.75, 1.2) translateY(-110%);
         opacity: 0;
+        user-select: none;
+        pointer-events: none;
     }
 }
+
 
 .appear {
-    animation: appearAnimation 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    animation: appearAnimation 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
     transform: translateY(110%) scale(0.7, 1.2);
     opacity: 0;
 }
 
+.dissappear {
+    animation: dissappearAnimation .6s ease-in-out forwards;
+    opacity: 1;
+}
+
 nav {
-    padding: 2em;
+    padding: 4em;
     background-color: #64B5F6;
     border-radius: 8px;
     margin-bottom: 1em;
     text-align: center;
+    transition: background-color .2s ease;
 }
 
 nav h2 {
     color: white;
+}
+
+.display-none {
+    display: none;
 }
