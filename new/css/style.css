@@ -94,7 +94,7 @@ html {
 }
 
 .dissappear {
-    animation: dissappearAnimation .6s ease-in-out forwards;
+    animation: dissappearAnimation .5s ease-in-out forwards;
     opacity: 1;
 }
 
