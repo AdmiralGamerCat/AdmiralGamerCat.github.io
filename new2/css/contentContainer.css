@@ -9,7 +9,6 @@
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
-    max-width: 1000px;
     perspective: 1000px;
 }
 
@@ -95,4 +94,18 @@
 
 .contentContainer {
     animation: test 2s ease forwards;
+}
+
+
+.projectInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.projectContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap: 2em;
 }

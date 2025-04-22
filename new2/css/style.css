@@ -10,6 +10,7 @@ html {
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
     color: var(--primary-text);
+    background-color: var(--body-bg);
 }
 
 #container {
