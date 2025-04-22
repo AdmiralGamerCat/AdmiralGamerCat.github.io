@@ -1,0 +1,63 @@
+:root {
+    /* 🌑 Base Colors */
+    --body-bg: #121212;
+    --navbar-bg: #212121;
+    --primary-text: whitesmoke;
+    --secondary-text: #C0C0C0;
+    --placeholder-text: #888888;
+
+    /* 🔗 Links */
+    --link-text: #6EBBFF;
+    --link-text-hover: #90D2FF;
+
+    /* 🎨 Accents */
+    --accent-color: #84C5FF;           /* richer sky blue */
+    --secondary-accent-color: #FFE066; /* soft gold */
+
+    /* ✅ Buttons */
+    --btn-bg: #6FD88E;                 /* vivid mint green */
+    --btn-text-color: whitesmoke;
+    --btn-hover-bg: #52C878;
+    --btn-active-bg: #3FB864;
+
+    --secondary-btn-bg: #7A7A7A;
+    --secondary-btn-text-color: whitesmoke;
+    --secondary-btn-hover-bg: #666666;
+    --secondary-btn-active-bg: #4D4D4D;
+
+    /* 🧭 Navbar */
+    --navbar-link-color: #84C5FF;
+    --navbar-link-hover-color: #B3E1FF;
+    --burger-menu-icon-color: #84C5FF;
+
+    /* 🔲 Inputs */
+    --input-bg: #2C2C2C;
+    --input-text-color: whitesmoke;
+    --input-border: #555555;
+    --input-focused-border: #84C5FF;
+
+    /* ⚠️ Status Colors */
+    --error-text: #FF6F6F;            /* coral red */
+    --success-color: #6FD88E;
+    --warning-color: #FFB74D;         /* amber */
+    --info-color: #4FC3F7;            /* vibrant cyan */
+
+    /* 📁 File-Based Colors */
+    --file-open-color: #A8E063;       /* lime green */
+    --file-open-hover: #8AD43C;
+    --file-open-active: #6FC11A;
+
+    --file-close-color: #FF8A80;      /* vivid peach */
+    --file-close-hover: #FF6D63;
+    --file-close-active: #FF4E42;
+
+    --file-enlarge-color: #D187FF;    /* vibrant lavender */
+    --file-enlarge-hover: #B76CFF;
+    --file-enlarge-active: #9E4CFF;
+
+    /* 👨‍💻 Code-Related Colors */
+    --code-function: #FFC46B;         /* strong gold-orange */
+    --code-variable: #BAA9FF;         /* bright violet */
+    --code-constant: #FF94C2;         /* soft hot pink */
+    --code-comment: #A1A1A1;          /* slightly brighter gray */
+}

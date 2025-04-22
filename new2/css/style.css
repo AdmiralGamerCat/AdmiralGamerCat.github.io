@@ -9,27 +9,14 @@
 html {
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
+    color: var(--primary-text);
 }
 
 #container {
     width: 100%;
     min-height: 100vh;
     padding: 1em;
-    background-color: #121212;
-}
-
-nav {
-    background-color: whitesmoke;
-    padding: 4em;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-nav:not(nav:last-of-type) {
-    margin-bottom: 1em;
+    background-color: var(--body-bg);
 }
 
 @keyframes appearAnimation {
