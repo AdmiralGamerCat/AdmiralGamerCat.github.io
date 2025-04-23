@@ -3,51 +3,7 @@
 let projects = [
     {
         title: "UOMO webshop",
-        description: "Description",
-        thumbnails: [
-            "../images/projects/uomo-webshop/home-page.png",
-            "../images/projects/uomo-webshop/contact-page.png",
-            "../images/projects/uomo-webshop/blog-page.png",
-            "../images/projects/uomo-webshop/shop-page.png",
-            "../images/projects/uomo-webshop/about-page.png"
-        ]
-    },
-    {
-        title: "UOMO webshop",
-        description: "Description",
-        thumbnails: [
-            "../images/projects/uomo-webshop/home-page.png",
-            "../images/projects/uomo-webshop/contact-page.png",
-            "../images/projects/uomo-webshop/blog-page.png",
-            "../images/projects/uomo-webshop/shop-page.png",
-            "../images/projects/uomo-webshop/about-page.png"
-        ]
-    },
-    {
-        title: "UOMO webshop",
-        description: "Description",
-        thumbnails: [
-            "../images/projects/uomo-webshop/home-page.png",
-            "../images/projects/uomo-webshop/contact-page.png",
-            "../images/projects/uomo-webshop/blog-page.png",
-            "../images/projects/uomo-webshop/shop-page.png",
-            "../images/projects/uomo-webshop/about-page.png"
-        ]
-    },
-    {
-        title: "UOMO webshop",
-        description: "Description",
-        thumbnails: [
-            "../images/projects/uomo-webshop/home-page.png",
-            "../images/projects/uomo-webshop/contact-page.png",
-            "../images/projects/uomo-webshop/blog-page.png",
-            "../images/projects/uomo-webshop/shop-page.png",
-            "../images/projects/uomo-webshop/about-page.png"
-        ]
-    },
-    {
-        title: "UOMO webshop",
-        description: "Description",
+        description: `A responsive, multi-page webshop created for a fictional pharmaceutical brand called <strong>UOMO</strong>. Designed to replicate the layout from <a href="https://www.figma.com/file/FVOwEQHZ5ZicBrhSRAlRnv?type=design&mode=design" target="_blank" rel="noopener noreferrer">this Figma design</a>, it was developed as the final project for the CSS course at <a href="https://codecrashers.nl" target="_blank" rel="noopener noreferrer">CodeCrashers</a>. The site features a homepage, blog, product listings, contact page, and more—highlighting both structural layout and custom styling.`,
         thumbnails: [
             "../images/projects/uomo-webshop/home-page.png",
             "../images/projects/uomo-webshop/contact-page.png",
@@ -58,6 +14,8 @@ let projects = [
     },
 ];
 
+let leftRightNum = 0;
+
 function createProject(project) {
     // creates project container
     const projectContainer = document.createElement("div");
@@ -66,7 +24,7 @@ function createProject(project) {
     // creates project info container
     const projectInfo = document.createElement("div");
     projectInfo.classList.add("projectInfo");
-    projectContainer.appendChild(projectInfo);
+    // projectContainer.appendChild(projectInfo); !!!!
 
     // creates project title
     const projectTitle = document.createElement("h2");
@@ -75,13 +33,33 @@ function createProject(project) {
 
     // creates project description
     const projectDescription = document.createElement("p");
-    projectDescription.textContent = project.description;
+    projectDescription.innerHTML = project.description;
     projectInfo.appendChild(projectDescription);
 
     // creates slider container
     const sliderContainer = document.createElement("div");
     sliderContainer.classList.add("sliderContainer");
-    projectContainer.appendChild(sliderContainer);
+    // projectContainer.appendChild(sliderContainer); !!!!
+
+    if (leftRightNum === 0) {
+        // order of project info and slider
+        projectContainer.appendChild(projectInfo);
+        projectContainer.appendChild(sliderContainer);
+
+        // order of title color
+        projectTitle.style.color = "var(--accent-color)";
+
+        leftRightNum = 1
+    } else if (leftRightNum === 1) {
+        // order of project info and slider
+        projectContainer.appendChild(sliderContainer);
+        projectContainer.appendChild(projectInfo);
+
+        // order of title color
+        projectTitle.style.color = "var(--secondary-accent-color)";
+
+        leftRightNum = 0
+    }
 
     // creates slider
     const slider = document.createElement("div");

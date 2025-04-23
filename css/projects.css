@@ -1,43 +1,53 @@
 .projectsContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    gap: 1em;
 }
 
 .projectContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 1em;
     width: 100%;
 }
 
-.projectContainer:not(.projectContainer:last-of-type) {
-    margin-bottom: 1em;
+/* Ensure both children flex properly */
+.projectContainer > .projectInfo,
+.projectContainer > .sliderContainer {
+    flex: 1 1 500px; /* minimum width before wrapping */
+    box-sizing: border-box;
 }
 
+/* Description Styling */
 .projectContainer > .projectInfo {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    padding: 1em;
+    background-color: var(--navbar-bg);
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
+/* Slider container styling */
 .projectContainer > .sliderContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: fit-content;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 1000px;
 }
 
+/* Slider styling */
 .sliderContainer > .slider {
     aspect-ratio: 16/9;
     display: flex;
     flex-direction: row;
     white-space: nowrap;
-    /* width: 100%; */
     transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 .sliderContainer > .slider > img {
@@ -48,7 +58,7 @@
     object-fit: cover;
 }
 
-
+/* Dots for navigation */
 .dotsContainer {
     display: flex;
     justify-content: center;
@@ -67,4 +77,10 @@
 
 .dot.active {
     background-color: white;
+}
+
+@media screen and (max-width: 1000px) {
+    .projectInfo {
+        order: -1;
+    }    
 }

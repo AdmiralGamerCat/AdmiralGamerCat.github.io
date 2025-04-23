@@ -9,6 +9,7 @@
     /* 🔗 Links */
     --link-text: #6EBBFF;
     --link-text-hover: #90D2FF;
+    --link-text-visited: #B8CFFF; /* subtle faded blue */
 
     /* 🎨 Accents */
     --accent-color: #84C5FF;           /* richer sky blue */
@@ -28,6 +29,7 @@
     /* 🧭 Navbar */
     --navbar-link-color: #84C5FF;
     --navbar-link-hover-color: #B3E1FF;
+    --navbar-link-visited-color: #B8CFFF; /* added for consistency */
     --burger-menu-icon-color: #84C5FF;
 
     /* 🔲 Inputs */

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+  outline: 2px dashed var(--accent-color); /* Or any accessible color */
+  outline-offset: 4px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Rubik", sans-serif;
+    color: var(--primary-text);
+    background-color: var(--body-bg);
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: var(--body-bg);
+}
+
+@keyframes appearAnimation {
+    0% {
+      transform: translateY(110%) scale(0.7, 1.2);
+      opacity: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+  
+    12.5% {
+      transform: translateY(55%) scale(0.9, 1.05);
+    }
+  
+    25% {
+      transform: translateY(-2%) scale(1, 1);
+      opacity: 1;
+    }
+  
+    35%, 65% {
+      transform: translateY(0%) scale(1, 1);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(0%) scale(1, 1);
+      opacity: 1;
+      user-select: all;
+      pointer-events: all;
+    }
+}
+
+.appear {
+    animation: appearAnimation 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    opacity: 0;
+    display: none;
+}
+
+/* navigation bar styles */
+nav {
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--navbar-bg);
+  padding: 1em 0.5em;
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 0.5em;
+}
+
+/* clickables styles */
+a {color: var(--link-text); text-decoration: underline dotted;}
+a:hover {color: var(--link-text-hover); text-decoration: underline;}
+a:visited {color: var(--link-text-visited); text-decoration: underline;}
+
+a.btn {
+  padding: 0.5em;
+  background-color: var(--btn-bg);
+  border-radius: 8px;
+  color: var(--primary-text);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+a.btn:hover {background-color: var(--btn-hover-bg);}
+
+a.btn:active {background-color: var(--btn-active-bg);}
+
+a.btn.current {background-color: var(--btn-active-bg);}
+
+/* work in progress styles */
+h1.wip {
+  padding: 1em;
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 4px;
+  margin: auto 0;
+  font-size: clamp(1.5em, 1.75em, 2em);
+}

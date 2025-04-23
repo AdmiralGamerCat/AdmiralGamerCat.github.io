@@ -39,4 +39,10 @@ function loader() {
     }, totalNeededLoadtime); // this should be the length of the animation playing per block plus the longest animation delay
 }
 
-loader()
+if (!sessionStorage.getItem("hasVisited")) {
+    sessionStorage.setItem("hasVisited", "true");
+    loader(); // your loader only on first page load of session
+} else {
+    // skip loader
+    console.log("Already visited this session – skipping loader");
+}
