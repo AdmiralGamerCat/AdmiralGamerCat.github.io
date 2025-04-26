@@ -36,13 +36,15 @@ function loader() {
             window.scrollTo(0, 0);
             document.body.style.overflow = "auto";
         }, 300);
-    }, totalNeededLoadtime); // this should be the length of the animation playing per block plus the longest animation delay
+    }, totalNeededLoadtime);
 }
 
 if (!sessionStorage.getItem("hasVisited")) {
     sessionStorage.setItem("hasVisited", "true");
-    loader(); // your loader only on first page load of session
+    loader();
 } else {
-    // skip loader
     console.log("Already visited this session – skipping loader");
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, totalNeededLoadtime);
 }

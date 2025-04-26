@@ -82,5 +82,9 @@
 @media screen and (max-width: 1000px) {
     .projectInfo {
         order: -1;
-    }    
+    }
+
+    .projectContainer > .projectInfo {
+        margin-bottom: 0;
+    }
 }
