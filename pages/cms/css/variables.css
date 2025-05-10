@@ -1,0 +1,23 @@
+:root {
+  --main-color: #1e3050;
+  
+  /* Red Pastel */
+  --red: hsl(0, 70%, 75%);
+  --red-light: hsl(0, 70%, 85%);
+  --red-dark: hsl(0, 70%, 65%);
+
+  /* Green Pastel */
+  --green: hsl(140, 50%, 75%);
+  --green-light: hsl(140, 50%, 85%);
+  --green-dark: hsl(140, 50%, 65%);
+
+  /* Yellow Pastel */
+  --yellow: hsl(45, 90%, 75%);
+  --yellow-light: hsl(45, 90%, 85%);
+  --yellow-dark: hsl(45, 90%, 65%);
+
+  /* Blue Pastel */
+  --blue: hsl(210, 70%, 75%);
+  --blue-light: hsl(210, 70%, 85%);
+  --blue-dark: hsl(210, 70%, 65%);
+}

@@ -1,0 +1,214 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--main-color);
+}
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: whitesmoke;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+/* button styles */
+button, input, select, textarea {
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    width: fit-content;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--yellow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+button.red {
+    background-color: var(--red);
+}
+
+button.green {
+    background-color: var(--green);
+}
+
+button.blue {
+    background-color: var(--blue);
+}
+
+/* button hover styles */
+button:hover, input:hover, select:hover, textarea:hover {
+    transform: translateY(-5px);
+    background-color: var(--yellow-dark);
+    box-shadow: 0px 5px 0px var(--main-color);
+}
+
+button.red:hover {
+    background-color: var(--red-dark);
+}
+
+button.green:hover {
+    background-color: var(--green-dark);
+}
+
+button.blue:hover {
+    background-color: var(--blue-dark);
+}
+
+/* button active styles */
+button:active {
+    transform: translateY(0);
+    background-color: var(--yellow-light);
+    box-shadow: none;
+}
+
+button.red:active {
+    background-color: var(--red-light);
+}
+
+button.green:active {
+    background-color: var(--green-light);
+}
+
+button.blue:active {
+    background-color: var(--blue-light);
+}
+
+/* icon button styles */
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 2.5em;
+    width: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, max-width 0.3s ease;
+}
+
+.icon-btn:hover {
+    max-width: 195px;
+}
+
+.icon-btn > .btn-text {
+    white-space: nowrap;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 0.3s ease, margin 0.3s ease, opacity 0.3s ease;
+}
+
+.icon-btn:hover > .btn-text {
+    max-width: 300px;
+    opacity: 1;
+    margin-right: 0.5em;
+}
+
+/* menu styles */
+.menu-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.menu {
+    padding: 1em;
+    border-radius: 4px;
+    border: 2px solid var(--main-color);
+    background-color: whitesmoke;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 1/1.5;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.menu.hidden {
+    opacity: 0;
+    transform: translateY(5em) scaleX(0.75);
+}
+
+.menu:hover {
+    background-color: white;
+    box-shadow: 5px 5px 0px var(--main-color);
+    transform: translateY(-5px) translateX(-5px);
+}
+
+.menu-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* create element menu styles */
+input:focus, input:active, select:focus, select:active, textarea:active, textarea:focus {
+    background-color: var(--yellow-light);
+}
+
+input, select, textarea {
+    text-transform: none;
+}
+
+.create-element-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 100%;
+}
+
+.element-content-input {
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+#container > .create-element-btn {
+    margin: 0 auto;
+}
+
+
+/* borders */
+.border-top {
+    border-top: 2px solid var(--main-color);
+    padding-top: 1em;
+    margin-top: 1em;
+}
+
+.border-bottom {
+    border-bottom: 2px solid var(--main-color);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
