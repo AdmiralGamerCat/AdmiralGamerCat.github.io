@@ -21,7 +21,7 @@ function removeMenu(menu) {
 
 function showElement(element) {
     // Set initial styles for transition
-    element.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+    element.style.transition = "transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, max-width 0.3s ease";
     element.style.transform = "translateY(5em) scaleX(0.75)";
     element.style.opacity = "0";
     element.classList.remove("hidden");
@@ -94,7 +94,9 @@ function createMenu(menuId, menuTitleContent, menuContent) {
     closeBtn.appendChild(createElement("span", ["btn-text"], "", "close"));
     closeBtn.innerHTML += `<i class="fa-solid fa-xmark fa-xl"></i>`;
     closeBtn.addEventListener("click", () => {
-        addCreateElementBtn();
+        if (menuId == "createUserElementMenu") {
+            addCreateElementBtn();
+        }
         removeMenu(menu);
     });
     menuTop.appendChild(closeBtn);
@@ -114,13 +116,33 @@ function createMenu(menuId, menuTitleContent, menuContent) {
 }
 
 function createUserElement(elementType, elementContent) {
+    const userElementWrapper = createElement("div", ["user-element-wrapper", "header", "hidden"]);
     const userElement = document.createElement(elementType);
-    userElement.classList.add("userElement", "hidden");
+    userElementWrapper.appendChild(userElement);
+    userElement.classList.add("user-element");
     userElement.textContent = elementContent;
 
-    container.appendChild(userElement);
+    // delete button
+    const deleteBtn = createElement("button", ["icon-btn", "red", "delete-btn", "hidden"]);
+    deleteBtn.appendChild(createElement("span", ["btn-text", "delete-btn"], "", "delete"));
+    deleteBtn.innerHTML += `<i class="fa-solid fa-trash-can fa-xl"></i>`;
+
+    deleteBtn.addEventListener("click", () => {
+        removeElement(userElementWrapper);
+    });
+
+    userElementWrapper.addEventListener("mouseenter", () => {
+        userElementWrapper.appendChild(deleteBtn);
+        showElement(deleteBtn);
+    })
+
+    userElementWrapper.addEventListener("mouseleave", () => {
+        removeElement(deleteBtn);
+    })
+
+    container.appendChild(userElementWrapper);
     addCreateElementBtn();
-    showElement(userElement);
+    showElement(userElementWrapper);
 }
 
 function createUserElementMenu() {
@@ -166,6 +188,8 @@ function createUserElementMenu() {
     menuContent.appendChild(menuBottom);
 
     const menu = createMenu("createUserElementMenu", "Create new element", menuContent);
+    setTimeout(() => elementContentInput.focus(), 100);
+
 
     createUserElementBtn.addEventListener("click", () => {
         if (!createElementForm.querySelector("#elementContentInput").value) {
