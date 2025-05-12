@@ -1,5 +1,6 @@
 :root {
   --main-color: #1e3050;
+  --selected-font: Arial, Helvetica, sans-serif;
   
   /* Red Pastel */
   --red: hsl(0, 70%, 75%);

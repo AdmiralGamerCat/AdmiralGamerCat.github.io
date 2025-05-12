@@ -1,111 +1,132 @@
 "use strict";
 
 const container = document.querySelector("#container");
-const settingsBtn = container.querySelector(".settings-btn");
+const settingsBtn = document.querySelector(".settings-btn")
 
-function showMenu(menu) {
-    menu.parentElement.classList.remove("hidden");
+function createElement(tag, classList=[], innerHTML="", textContent="", id="") {
+    if (!tag) {
+        console.log("failed to create element, missing tag.");
+        return
+    }
 
-    menu.classList.remove("hidden");
+    const element = document.createElement(tag);
+
+    if (classList) {
+        element.classList.add(...classList);
+    }
+
+    if (innerHTML) {
+        element.innerHTML = innerHTML;
+    }
+
+    if (textContent) {
+        element.textContent = textContent;
+    }
+
+    if (id) {
+        element.id = id;
+    }
+
+    return element;
 }
 
-function removeMenu(menu) {
-    menu.style.transform = "translateY(5em) scaleX(0.75)";
-    menu.style.opacity = "0";
-    menu.parentElement.classList.add("hidden");
-
-    setTimeout(() => {
-        menu.parentElement.remove();
-    }, 300);
+// font
+function changeFont(font) {
+    document.documentElement.style.setProperty("--selected-font", font);
 }
 
+function saveFont(font) {
+    localStorage.setItem("selectedFont", font);
+}
+
+const selectedFont = localStorage.getItem("selectedFont");
+if (selectedFont) {
+    changeFont(selectedFont);
+}
+
+// show / remove element functions
 function showElement(element) {
-    // Set initial styles for transition
-    element.style.transition = "transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, max-width 0.3s ease";
-    element.style.transform = "translateY(5em) scaleX(0.75)";
-    element.style.opacity = "0";
-    element.classList.remove("hidden");
-
-    // Force reflow to apply initial styles before transitioning
-    void element.offsetHeight;
-
-    // Set final styles to trigger the transition
-    element.style.transform = "translateY(0) scaleX(1)";
-    element.style.opacity = "1";
+    setTimeout(() => {
+        element.classList.remove("hidden");
+    }, 1);
 }
-
 
 function removeElement(element) {
-    element.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-    element.style.transform = "translateY(5em) scaleX(0.75)";
-    element.style.opacity = "0";
+    element.classList.add("hidden");
 
     setTimeout(() => {
         element.remove();
     }, 300);
 }
 
-function createElement(tag, classList = [], innerHTML = "", textContent = "", id = "") {
-    const element = document.createElement(tag);
-    if (classList.length) element.classList.add(...classList);
-    if (innerHTML) element.innerHTML = innerHTML;
-    if (textContent) element.textContent = textContent;
-    if (id) element.id = id;
-    return element;
+// show / remove menu functions
+function showMenu(menu) {
+    menu.parentElement.classList.remove("hidden");
+    menu.classList.remove("hidden");
+}
+
+function removeMenu(menu) {
+    menu.style.transform = "translateY(5em) scaleX(0.75)";
+    menu.style.opacity = "0";
+    menu.parentElement.style.opacity = "0";
+
+    setTimeout(() => {
+        menu.parentElement.remove();
+    }, 300);
 }
 
 function addCreateElementBtn() {
-    // create element button
-    const createUserElementBtn = createElement("button", ["create-element-btn", "icon-btn", "green"]);
-    createUserElementBtn.appendChild(createElement("span", ["btn-text"], "", "create element"));
-    createUserElementBtn.innerHTML += `<i class="fa-solid fa-plus fa-xl"></i>`;
+    const createNewElementBtn = createElement("button", ["create-new-user-element-btn", "icon-btn", "green"]);
+    createNewElementBtn.appendChild(createElement("span", ["btn-text"], "", "create new element"));
+    createNewElementBtn.innerHTML += `<i class="fa-solid fa-plus fa-xl"></i>`;
 
-    createUserElementBtn.addEventListener("click", () => {
-        removeElement(createUserElementBtn);
-        createUserElementMenu();
-    });
-    container.appendChild(createUserElementBtn); 
+    createNewElementBtn.addEventListener("click", () => {
+        removeElement(createNewElementBtn);
+        createNewElementMenu();
+    })
+
+    container.appendChild(createNewElementBtn);
 }
 
-function createMenu(menuId, menuTitleContent, menuContent) {
-    // menu container
+function createMenu(menuId, menuTitleContent, menuContent, menuType) {
     const menuContainer = createElement("div", ["menu-container", "hidden"]);
-    menuContainer.addEventListener("click", (e) => {
+    
+    menuContainer.addEventListener("click", (e) => { // remove menu when clicking outside menu
         if (e.target === menuContainer) {
-            if (menuId === "createUserElementMenu") {
+            if (menuId === "createNewElementMenu") {
                 addCreateElementBtn();
             }
+
             removeMenu(menu);
         }
     })
 
-    // menu
-    const menu = createElement("div", ["menu", "hidden"])
-    if (menuId) menu.id = menuId;
+    const menu = createElement("div", ["menu", menuType, "hidden"], "", "", menuId);
 
     // menu top
     const menuTop = createElement("div", ["menu-top", "header", "border-bottom"]);
 
-    // menu title
-    menuTop.appendChild(createElement("h1", [], menuTitleContent));
+    menuTop.appendChild(createElement("h1", [], "", menuTitleContent));
 
-    // close menu button
-    const closeBtn = createElement("button", ["icon-btn", "red"]);
+    // close button
+    const closeBtn = createElement("button", ["close-btn", "icon-btn", "red"]);
     closeBtn.appendChild(createElement("span", ["btn-text"], "", "close"));
     closeBtn.innerHTML += `<i class="fa-solid fa-xmark fa-xl"></i>`;
-    closeBtn.addEventListener("click", () => {
-        if (menuId == "createUserElementMenu") {
-            addCreateElementBtn();
-        }
-        removeMenu(menu);
-    });
-    menuTop.appendChild(closeBtn);
+    
+    closeBtn.addEventListener("click", () => { // remove menu when clicking on close button
+        if (menuId === "createNewElementMenu") {
+                addCreateElementBtn();
+            }
 
+        removeMenu(menu);
+    })
+
+    menuTop.appendChild(closeBtn);
     menu.appendChild(menuTop);
 
+    // menu content
     menu.appendChild(menuContent);
 
-    // END
     menuContainer.appendChild(menu);
     container.appendChild(menuContainer);
     setTimeout(() => {
@@ -115,97 +136,162 @@ function createMenu(menuId, menuTitleContent, menuContent) {
     return menu;
 }
 
-function createUserElement(elementType, elementContent) {
-    const userElementWrapper = createElement("div", ["user-element-wrapper", "header", "hidden"]);
-    const userElement = document.createElement(elementType);
-    userElementWrapper.appendChild(userElement);
-    userElement.classList.add("user-element");
-    userElement.textContent = elementContent;
+function createUserElement(tag, content) {
+    // user element container
+    const userElementContainer = createElement("div", ["user-element-container", "header", "hidden"]);
+    userElementContainer.appendChild(createElement(tag, ["userElement"], "", content));
 
     // delete button
-    const deleteBtn = createElement("button", ["icon-btn", "red", "delete-btn", "hidden"]);
-    deleteBtn.appendChild(createElement("span", ["btn-text", "delete-btn"], "", "delete"));
+    const deleteBtn = createElement("button", ["delete-btn", "icon-btn", "red"]);
+    deleteBtn.appendChild(createElement("span", ["btn-text"], "", "delete"));
     deleteBtn.innerHTML += `<i class="fa-solid fa-trash-can fa-xl"></i>`;
-
     deleteBtn.addEventListener("click", () => {
-        removeElement(userElementWrapper);
-    });
-
-    userElementWrapper.addEventListener("mouseenter", () => {
-        userElementWrapper.appendChild(deleteBtn);
-        showElement(deleteBtn);
+        removeElement(userElementContainer);
     })
 
-    userElementWrapper.addEventListener("mouseleave", () => {
-        removeElement(deleteBtn);
+    // add / remove delete button
+    userElementContainer.addEventListener("mouseenter", () => {
+        userElementContainer.appendChild(deleteBtn);
+        showElement(userElementContainer.querySelector(".delete-btn"));
     })
 
-    container.appendChild(userElementWrapper);
-    addCreateElementBtn();
-    showElement(userElementWrapper);
+    userElementContainer.addEventListener("mouseleave", () => {
+        const deleteBtn = userElementContainer.querySelector(".delete-btn");
+        
+        if (deleteBtn) {
+            removeElement(deleteBtn);
+        }
+    })
+
+    container.appendChild(userElementContainer);
+    showElement(userElementContainer);
 }
 
-function createUserElementMenu() {
-    const createUserElementBtn = createElement("button", ["create-element-btn", "icon-btn", "green"]);
-    createUserElementBtn.appendChild(createElement("span", ["btn-text"], "", "create element"));
-    createUserElementBtn.innerHTML += `<i class="fa-solid fa-plus fa-xl"></i>`;
+function createNewElementMenu() {
+    const menuContent = createElement("div", ["menu-content-wrapper"])
+    const form = createElement("form", ["menu-form"]);
 
-    // menu content
-    const menuContent = createElement("div", ["menu-content-wrapper"]);
+    // element tag input
+    const selectWrapper = createElement("div", ["tag-select-wrapper", "header"]);
+    const tagSelect = createElement("select", ["tag-select"], "", "", "tagSelect");
 
-    // element form
-    const createElementForm = createElement("form", ["create-element-form"]);
+    const tagOptions = [
+        { name: "Heading 1", value: "h1" },
+        { name: "Heading 2", value: "h2" },
+        { name: "Heading 3", value: "h3" },
+        { name: "Paragraph", value: "p" },
+        { name: "Blockquote", value: "blockquote" }
+    ];
 
-    // element type input
-    const elementTypeInputWrapper = createElement("div", ["element-type-input-wrapper", "header"]);
-    elementTypeInputWrapper.appendChild(createElement("label", ["element-type-input-label"], "", "Choose element type:"));
-    elementTypeInputWrapper.querySelector(".element-type-input-label").setAttribute("for", "elementTypeInput");
+    tagOptions.forEach(tagOption => {
+        const option = createElement("option");
+        option.textContent = tagOption.name;
+        option.value = tagOption.value;
 
-    elementTypeInputWrapper.appendChild(createElement("select", ["element-type-input"], "", "", "elementTypeInput"));
+        tagSelect.appendChild(option);
+    })
 
-    for (const element of ["h1", "h2", "h3", "p", "blockquote"]) {
-        const option = createElement("option", [], "", element);
-        option.value = element;
-
-        elementTypeInputWrapper.querySelector("#elementTypeInput").appendChild(option);
-    }
-
-    createElementForm.appendChild(elementTypeInputWrapper);
+    selectWrapper.appendChild(createElement("label", ["tag-select-label"], "", "Select element type:"));
+    selectWrapper.appendChild(tagSelect);
+    selectWrapper.querySelector(".tag-select-label").setAttribute("for", "tagSelect");
+    form.appendChild(selectWrapper);
 
     // element content input
-    const elementContentInput = createElement("textarea", ["element-content-input"], "", "", "elementContentInput");
-    elementContentInput.setAttribute("type", "text");
-    createElementForm.appendChild(createElement("label", ["element-content-input-label"], "", "Enter element content:"));
-    createElementForm.appendChild(elementContentInput);
-    createElementForm.querySelector(".element-content-input-label").setAttribute("for", "elementContentInput");
+    const contentInput = createElement("textarea", ["content-input"], "", "", "contentInput");
+    const contentInputLabel = createElement("label", ["content-input-label"], "", "Enter element content:");
+    form.appendChild(contentInputLabel);
+    form.querySelector(".content-input-label").setAttribute("for", "contentInput");
+    form.appendChild(contentInput);
 
     // menu bottom
     const menuBottom = createElement("div", ["menu-bottom", "header", "border-top"]);
     menuBottom.appendChild(createElement("div"));
-    menuBottom.appendChild(createUserElementBtn);
 
-    menuContent.appendChild(createElementForm);
-    menuContent.appendChild(menuBottom);
+    // create element button
+    const createElementBtn = createElement("button", ["create-element-btn", "icon-btn", "green"]);
+    createElementBtn.appendChild(createElement("span", ["btn-text"], "", "create element"));
+    createElementBtn.innerHTML += `<i class="fa-solid fa-plus fa-xl"></i>`;
 
-    const menu = createMenu("createUserElementMenu", "Create new element", menuContent);
-    setTimeout(() => elementContentInput.focus(), 100);
+    const menu = createMenu("createNewElementMenu", "Create new element", menuContent, "normal");;
+    setTimeout(() => contentInput.focus(), 100);
 
+    createElementBtn.addEventListener("click", () => {
+        const tag = form.querySelector("#tagSelect").value;
+        const content = form.querySelector("#contentInput").value;
 
-    createUserElementBtn.addEventListener("click", () => {
-        if (!createElementForm.querySelector("#elementContentInput").value) {
-            alert("element content can not be empty!");
+        if (!content) {
+            alert("Content can not be empty!");
             return;
         }
+
         removeMenu(menu);
-        createUserElement(createElementForm.querySelector("#elementTypeInput").value, createElementForm.querySelector("#elementContentInput").value);
+        createUserElement(tag, content);
+        addCreateElementBtn();
     })
+
+    menuContent.appendChild(form);
+    menuBottom.appendChild(createElementBtn);
+    menuContent.appendChild(menuBottom);
 }
 
-const dummy = document.createElement("div");
+function settingsMenu() {
+    const menuContent = createElement("div", ["menu-content-wrapper"]);
+    const form = createElement("form", ["menu-form"]);
+
+    // font select
+    const fontSelectWrapper = createElement("div", ["font-select-wrapper", "header"]);
+    fontSelectWrapper.appendChild(createElement("label", ["font-select-label"], "", "Select font:"));
+    const fontSelect = createElement("select", ["font-select"], "", "", "fontSelect");
+    fontSelectWrapper.querySelector(".font-select-label").setAttribute("for", "fontSelect");
+
+    const fontOptions = [ // font options
+        { name: "Arial (sans-serif)", value: "Arial, sans-serif" },
+        { name: "Georgia (serif)", value: "Georgia, serif" },
+        { name: "Courier New (monospace)", value: "'Courier New', monospace" },
+        { name: "Comic Sans MS (cursive)", value: "'Comic Sans MS', cursive, sans-serif" },
+        { name: "Times New Roman (serif)", value: "'Times New Roman', serif" },
+        { name: "Verdana (sans-serif)", value: "Verdana, sans-serif" }
+    ];
+
+    fontOptions.forEach(fontOption => { // add font options
+        const option = createElement("option");
+        option.textContent = fontOption.name;
+        option.value = fontOption.value;
+
+        fontSelect.appendChild(option);
+    })
+
+    if (saveFont) {
+        fontSelect.value = selectedFont;
+    }
+
+    fontSelect.addEventListener("change", () => {
+        changeFont(fontSelect.value);
+        saveFont(fontSelect.value);
+
+        const formElements = document.querySelectorAll("button, input, select, textarea");
+        formElements.forEach(element => {
+            element.style.fontFamily = fontSelect.value;
+        });
+    })
+
+    fontSelectWrapper.appendChild(fontSelect);
+
+    form.appendChild(fontSelectWrapper);
+
+    menuContent.appendChild(form);
+
+
+
+
+
+    const menu = createMenu("settingsMenu", "Settings", menuContent, "normal"); // create menu
+}
 
 settingsBtn.addEventListener("click", () => {
-    createMenu("settingsMenu", "Settings", dummy);
+    settingsMenu();
 })
 
-
-window.addEventListener("load", () => addCreateElementBtn());
+window.addEventListener("load", () => { // on load add create new element button
+    addCreateElementBtn();
+})
